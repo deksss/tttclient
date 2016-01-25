@@ -10,7 +10,7 @@ const EnemyCard = React.createClass({
 
 const EnemyHand = React.createClass({
   render: function () {
-  	              var cardNodes = this.props.enemyHand.map(function (card, i) {
+  	   var cardNodes = this.props.enemyHand.map(function (card, i) {
     return (
         <EnemyCard key = {i} >
         </EnemyCard>

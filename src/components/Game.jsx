@@ -2,13 +2,15 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import * as actionCreators from '../action_creators';
+import GameMain from './gameMain';
 
 export const VOTE_WIDTH_PERCENT = 8;
 
 export const GameView = React.createClass({
   mixins: [PureRenderMixin],
   render: function() {
-    return <div className="management">
+    return <div className="app">
+     <GameMain />
       <button ref="endTurn"
         onClick={this.props.nextTurn}>
         {this.props.whoTurn}
