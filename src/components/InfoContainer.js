@@ -1,4 +1,4 @@
-import styles from 'styles/styles.css';
+import styles from 'styles/style.css';
 import { Link } from 'react-router';
 
 var React = require('react');

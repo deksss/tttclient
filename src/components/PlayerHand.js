@@ -1,4 +1,4 @@
-import styles from 'styles/styles.css';
+import styles from 'styles/style.css';
 import React from 'react';
 import Unit from './unitRender';
 

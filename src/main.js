@@ -12,7 +12,7 @@ import App from './components/App';
 import {StartContainer} from './components/Start';
 import {GameContainer} from './components/Game';
 
-require('./style.css');
+require('./styles/style.css');
 
 const socket = io(`${location.protocol}//${location.hostname}:3001`);
 socket.on('state', state =>

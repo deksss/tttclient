@@ -3,7 +3,7 @@ var React = require('react'),
   GameField = require('./gameField'),
   PlayerHand = require('./playerHand'),
   InfoContainer = require('./infoContainer');
-import styles from 'styles/styles.css';
+import styles from 'styles/style.css';
 
 const playerHandExmpl = [
   {id: 1, info: 'cost 2 mana', hp: 10, atk: 1},

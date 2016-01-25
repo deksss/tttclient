@@ -1,4 +1,4 @@
-import styles from 'styles/styles.css';
+import styles from 'styles/style.css';
 
 const EnemyCard = React.createClass({
   render: function () {

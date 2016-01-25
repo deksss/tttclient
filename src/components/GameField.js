@@ -1,4 +1,4 @@
-import styles from 'styles/styles.css';
+import styles from 'styles/style.css';
 
 var React = require('react'),
   Unit = require('./unitRender');
