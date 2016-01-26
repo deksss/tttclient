@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import * as actionCreators from '../action_creators';
-import GameMain from './gameMain';
-
-export const VOTE_WIDTH_PERCENT = 8;
+import EnemyHand from './EnemyHand';
+import GameField from './GameField';
+import PlayerHand from './PlayerHand';
+import InfoContainer from './infoContainer';
+import styles from 'styles/style.css';
 
 export const GameView = React.createClass({
   mixins: [PureRenderMixin],
-  render: function() {
-    return <div className="app">
-     <GameMain />
-      <button ref="endTurn"
-        onClick={this.props.nextTurn}>
-        {this.props.whoTurn}
-      </button>
-      <button ref="next"
-        className="next"
-        onClick={this.props.setReady}>
-        {this.props.yourName}
-      </button>
-    </div>;
+  render: function() { 
+    return <div className = {styles['game-container']}>
+             <div className = {styles['game-container-main']}>
+               <EnemyHand enemyHand = {this.props.enemyHand} />
+               <GameField gameField = {this.props.gameField} />
+               <PlayerHand playerHand = {this.props.playerHand} />
+             </div>
+             <InfoContainer
+              whoTurn={this.props.whoTurn}
+              nextTurn={this.props.nextTurn} 
+              yourName={this.props.yourName} />
+          </div>
   }
 });
 
@@ -28,7 +29,10 @@ export const GameView = React.createClass({
 function mapStateToProps(state) {
   return {
     yourName: state.get('yourName'),
-    whoTurn: state.get('whoTurn')
+    whoTurn: state.get('whoTurn'),
+    gameField: state.get('gameField'),
+    enemyHand: state.get('enemyHand'),
+    playerHand: state.get('playerHand')
   }
 }
 

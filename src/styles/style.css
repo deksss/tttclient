@@ -2,7 +2,13 @@
 .hidden {
   display: none;
 }
-
+html, 
+body,
+#app,
+.app {
+  height:100%;
+  margin: 0;
+}
 .turn {
   position: relative;
   left: 150px;

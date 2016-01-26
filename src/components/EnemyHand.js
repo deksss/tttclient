@@ -1,4 +1,5 @@
 import styles from 'styles/style.css';
+import React, { PropTypes } from 'react';
 
 const EnemyCard = React.createClass({
   render: function () {
@@ -9,13 +10,15 @@ const EnemyCard = React.createClass({
 });
 
 const EnemyHand = React.createClass({
+  propTypes: {
+    enemyHand: PropTypes.array.isRequired
+  },
   render: function () {
-  	   var cardNodes = this.props.enemyHand.map(function (card, i) {
-    return (
-        <EnemyCard key = {i} >
-        </EnemyCard>
+    var cardNodes = this.props.enemyHand.map(function (card, i) {
+      return (
+        <EnemyCard key = {i} />
       );
-  });
+    });
     return (
       <div className={styles['hand-up']}>
         {cardNodes}

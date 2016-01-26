@@ -37,9 +37,10 @@ var LogBarMain = React.createClass({
 var EndTurnButton = React.createClass({
   render: function () {
     return (
-      <a className={styles['end-turn-button']}>
-      	 'End Turn'
-      </a>
+      <button ref="endTurn"
+                onClick={this.props.nextTurn}>
+                {this.props.whoTurn}
+      </button>
     );
   }
 });
@@ -47,7 +48,8 @@ var EndTurnButton = React.createClass({
 var PlayerInfo = React.createClass({
   render: function () {
     return (
-      <div className={styles['ememy-info']}>
+      <div className={styles['player-info']}>
+         {this.props.yourName}
       	<div className={styles['deck player-deck']}></div>
       </div>
     );
@@ -55,6 +57,7 @@ var PlayerInfo = React.createClass({
 });
 
 
+  
 
 
 var InfoContainer = React.createClass({
@@ -64,8 +67,10 @@ var InfoContainer = React.createClass({
       	<EnemyInfo />
       	<ScoreBar />
       	<LogBarMain />
-      	<EndTurnButton />
-      	<PlayerInfo />
+      	<EndTurnButton 
+        whoTurn={this.props.whoTurn}
+        nextTurn={this.props.nextTurn} />
+      	<PlayerInfo yourName={this.props.yourName} />
         <Link to='/'>Go Start</Link>
       </div>
     );

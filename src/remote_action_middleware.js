@@ -6,4 +6,4 @@ export default socket => store => next => action => {
     socket.emit('action', objectAssign({}, action, {clientId}));
   }
   return next(action);
-}
+};

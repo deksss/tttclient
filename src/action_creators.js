@@ -1,11 +1,11 @@
-export function setClientId(clientId) {
+export function setClientId (clientId) {
   return {
     type: 'SET_CLIENT_ID',
     clientId
   };
 }
 
-export function setConnectionState(state, connected) {
+export function setConnectionState (state, connected) {
   return {
     type: 'SET_CONNECTION_STATE',
     state,
@@ -13,42 +13,63 @@ export function setConnectionState(state, connected) {
   };
 }
 
-export function setState(state) {
+export function setState (state) {
   return {
     type: 'SET_STATE',
     state
   };
 }
 
-export function next() {
+export function setField (field) {
+  return {
+    type: 'SET_FIELD',
+    field
+  };
+}
+
+export function setPlayerHand (playerHand) {
+  return {
+    type: 'SET_PLAYER_HAND',
+    playerHand
+  };
+}
+
+export function setEnemyHand (enemyHand) {
+  return {
+    type: 'SET_ENEMY_HAND',
+    enemyHand
+  };
+}
+
+export function next () {
   return {
     meta: {remote: true},
     type: 'NEXT'
   };
 }
 
-export function start() {
+export function start () {
   return {
     meta: {remote: true},
     type: 'PLAYER_START'
   };
 }
 
-export function setReady() {
+export function setReady () {
   return {
     meta: {remote: true},
     type: 'PLAYER_READY'
   };
 }
 
-export function nextTurn() {
+export function nextTurn () {
   return {
     meta: {remote: true},
     type: 'NEXT_TURN'
   };
 }
 
-export function restart() {
+export function restart () {
   return {
     meta: {remote: true},
     type: 'RESTART'
