@@ -39,10 +39,10 @@ store.dispatch(setClientId(getClientId()));
 
 store.dispatch(setField(
   [['empty', 'empty', 'empty'],
-  ['empty', 'empty', 'empty'],   
+  ['empty', 'empty', 'empty'],
   ['empty', 'empty', 'empty']]));
 
-store.dispatch(setPlayerHand( [
+store.dispatch(setPlayerHand([
   {id: 1, info: 'cost 2 mana', hp: 10, atk: 1},
   {id: 2, info: 'cost 4 mana', hp: 5, atk: 1},
   {id: 3, info: 'cost 6 mana', hp: 9, atk: 6}]));
@@ -50,8 +50,8 @@ store.dispatch(setPlayerHand( [
 store.dispatch(setEnemyHand([{id: 1}, {id: 2}, {id: 3}]));
 
 const routes = <Route component={App}>
-  <Route path="/" component={StartContainer} />
-  <Route path="/game" component={GameContainer} />
+  <Route path='/' component={StartContainer} />
+  <Route path='/game' component={GameContainer} />
 </Route>;
 
 ReactDOM.render(

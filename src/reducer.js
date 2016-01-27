@@ -1,4 +1,4 @@
-import {List, Map} from 'immutable';
+import {Map} from 'immutable';
 
 function setConnectionState (state, connectionState, connected) {
   return state.set('connection', Map({
@@ -9,16 +9,12 @@ function setConnectionState (state, connectionState, connected) {
 
 function setState (state, newState) {
   let result = state.merge(newState);
-  console.log('state_seted' );
-
   if (!state.get('yourName')) {
     result = setReady(result);
   }
-
   if (newState.ready) {
     result = whoTurn(result);
   }
-
   return result;
 }
 
@@ -46,8 +42,7 @@ function whoTurn (state) {
   if (state.get('curPlayer')) {
     if (state.get('curPlayer') === state.get('yourName')) {
       return state.set('whoTurn', 'you');
-    }
-    else {
+    } else {
       return state.set('whoTurn', 'enemy');
     }
   } else {
@@ -62,13 +57,10 @@ function setReady (state) {
   if (findResult && findResult.get('name')) {
     name = findResult.get('name');
     return state.set('yourName', name);
-  }
-  else {
+  } else {
     return state.set('yourName', '');
   }
 }
-
-
 
 export default function (state = Map(), action) {
   switch (action.type) {

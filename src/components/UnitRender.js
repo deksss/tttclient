@@ -1,8 +1,10 @@
 import styles from 'styles/style.css';
-
-var React = require('react');
+import React, { PropTypes } from 'react';
 
 var Unit = React.createClass({
+  propTypes: {
+    data: PropTypes.object.isRequired
+  },
   render: function () {
     return (
        <div className={styles['unit']}>
@@ -20,7 +22,7 @@ var Unit = React.createClass({
                <div className={styles['unit-foot-hp']}> {this.props.data.hp}</div>
               <div className={styles['unit-foot-d']}></div>
                <div className={styles['unit-foot-atk']}>{this.props.data.atk}</div>
-              <div className={styles[ 'unit-foot-dr']}></div>
+              <div className={styles['unit-foot-dr']}></div>
             </div>
             <div className={styles['unit-info']}> {this.props.data.info}</div>
           </div>
