@@ -11,8 +11,8 @@ const PlayerCard = React.createClass({
     return {classStr: 'card-container'};
   },
   componentWillReceiveProps (nextProps) {
-    const cssStr = 'card-container';
-    const cssStrSelected = 'card-container card-selected';
+    const cssStr = styles['card-container'] + ' ' + styles['give-card'];
+    const cssStrSelected = styles['card-container'] + ' ' + styles['card-selected'];
     if (nextProps.selected) {
       this.setState({classStr: cssStrSelected});
     } else {
@@ -26,8 +26,8 @@ const PlayerCard = React.createClass({
     this.props.onCardClick(this.props.data.id);
   },
   render: function () {
-    return (
-      <div className = {styles[this.state.classStr]}
+    return (      
+      <div className = {this.state.classStr}
         onClick = {this.handleClick}>
 				<div className={styles['card']}>
           <Unit className={styles['unit']} data = {this.props.data} />
@@ -57,16 +57,16 @@ const PlayerHand = React.createClass({
   },
   render: function () {
     var cardSelect = this.cardSelect;
-    var selectedId = this.state.selectedCardId;
-    var cardNodes = this.props.playerHand.map(function (card, i) {
+    var  selectedId = this.state.selectedCardId;
+    var  cardNodes = this.props.playerHand.map(function(card, i) {
       var selectedThis = card.id === selectedId;
       return (
         <PlayerCard selected = {selectedThis} data = {card} key = {i} onCardClick = {cardSelect} />
       );
     });
     return (
-      <div className={styles['hand-dwn']}>
-        {cardNodes}
+      <div className={styles['hand-dwn']}>   
+        {cardNodes}  
       </div>
     );
   }

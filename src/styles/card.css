@@ -1,0 +1,19 @@
+.give-card-animated {
+  position: relative;
+  animation: shows-from-r-to-l 0.8s linear 0.8s 1;
+}
+
+@keyframes shows-from-r-to-l {
+  0% {
+   transform: translate(+400px, 0);
+   opacity: 1;
+  }
+  50% {
+   transform: translate(+250px, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(+1px, 0);
+     opacity: 1;
+  }
+}

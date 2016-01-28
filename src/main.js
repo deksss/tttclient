@@ -18,6 +18,9 @@ const socket = io(`${location.protocol}//${location.hostname}:3001`);
 socket.on('state', state =>
   store.dispatch(setState(state))
 );
+socket.on('your id', idForClient =>
+ alert(idForClient)
+);
 [
   'connect',
   'connect_error',
@@ -46,6 +49,9 @@ store.dispatch(setPlayerHand([
   {id: 1, info: 'cost 2 mana', hp: 10, atk: 1},
   {id: 2, info: 'cost 4 mana', hp: 5, atk: 1},
   {id: 3, info: 'cost 6 mana', hp: 9, atk: 6}]));
+
+
+
 
 store.dispatch(setEnemyHand([{id: 1}, {id: 2}, {id: 3}]));
 

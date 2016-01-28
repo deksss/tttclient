@@ -1,7 +1,7 @@
+
 .hidden {
   display: none;
 }
-
 html, 
 body,
 #app,
@@ -9,7 +9,6 @@ body,
   height:100%;
   margin: 0;
 }
-
 .turn {
   position: relative;
   left: 150px;
@@ -27,7 +26,6 @@ body,
 .deck {
   background-color: white;
 }
-
 .end-game {
   position: relative;
   left: 200px;
@@ -630,26 +628,5 @@ body,
   }
   100% {
     transform: translate(-30px, -30px);
-  }
-}
-
-
-.give-card {
-  position: relative;
-  animation: shows-from-r-to-l 0.8s linear 0.8s 1;
-}
-
-@keyframes shows-from-r-to-l {
-  0% {
-   transform: translate(+400px, 0);
-   opacity: 0;
-  }
-  50% {
-   transform: translate(+250px, 0);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translate(+1px, 0);
-     opacity: 1;
   }
 }
