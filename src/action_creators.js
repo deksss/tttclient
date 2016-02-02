@@ -5,6 +5,25 @@ export function setClientId (clientId) {
   };
 }
 
+export function joinRoom () {
+  return {
+    type: 'JOIN_ROOM'
+  };
+}
+
+export function createRoom () {
+  return {
+    type: 'CREATE_ROOM'
+  };
+}
+
+export function setRoomId (roomId) {
+  return {
+    type: 'SET_ROOM_ID',
+    roomId
+  };
+}
+
 export function setConnectionState (state, connected) {
   return {
     type: 'SET_CONNECTION_STATE',

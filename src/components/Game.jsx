@@ -7,6 +7,7 @@ import GameField from './GameField';
 import PlayerHand from './PlayerHand';
 import InfoContainer from './infoContainer';
 import styles from 'styles/style.css';
+import '../styles/style.css';
 
 export const GameView = React.createClass({
   mixins: [PureRenderMixin],

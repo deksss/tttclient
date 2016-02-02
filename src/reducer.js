@@ -1,4 +1,20 @@
 import {Map} from 'immutable';
+import {sendJoin, sendCreate} from './main';
+import uuid from 'uuid';
+
+function joinRoom(state) {
+  console.table(state);
+  console.log('tryin join' + state.get('roomId'));
+  sendJoin(state.get('roomId'), state.get('clientId'));
+  return state;
+}
+
+function createRoom(state) {
+  const roomId = uuid.v4();
+  state = setRoomId(state, roomId);
+  sendCreate(roomId, state.get('clientId'));
+  return state;
+}
 
 function setConnectionState (state, connectionState, connected) {
   return state.set('connection', Map({
@@ -8,18 +24,27 @@ function setConnectionState (state, connectionState, connected) {
 }
 
 function setState (state, newState) {
-  let result = state.merge(newState);
-  if (!state.get('yourName')) {
-    result = setReady(result);
+  if (newState) {
+    console.log('new state have:');
+    console.log(newState);
+    let result = state.merge(newState);
+    if (!state.get('yourName')) {
+      result = setYourName(result);
+    }
+    if (newState.ready) {
+      result = whoTurn(result);
+    }
+    return result;
   }
-  if (newState.ready) {
-    result = whoTurn(result);
-  }
-  return result;
 }
 
 function setField (state, field) {
   return state.set('gameField', field);
+}
+
+function setRoomId (state, roomId) {
+  console.log(roomId);
+  return state.set('roomId', roomId);
 }
 
 function setPlayerHand (state, playerHand) {
@@ -50,7 +75,7 @@ function whoTurn (state) {
   }
 }
 
-function setReady (state) {
+function setYourName (state) {
   const id = state.get('clientId');
   const findResult = state.get('players').find(p => p.get('id') === id);
   let name = '';
@@ -72,8 +97,8 @@ export default function (state = Map(), action) {
       return setState(state, action.state);
     case 'PLAYER_START':
       return start(state);
-    case 'PLAYER_READY':
-      return setReady(state);
+    case 'PLAYER_SET_NAME':
+      return setYourName(state);
     case 'NEXT_TURN':
       return nextTurn(state);
     case 'SET_FIELD':
@@ -82,6 +107,12 @@ export default function (state = Map(), action) {
       return setPlayerHand(state, action.playerHand);
     case 'SET_ENEMY_HAND':
       return setEnemyHand(state, action.enemyHand);
+    case 'SET_ROOM_ID':
+      return setRoomId(state, action.roomId);
+    case 'JOIN_ROOM':
+        return joinRoom(state);
+    case 'CREATE_ROOM':
+        return createRoom(state);
   }
   return state;
 }
