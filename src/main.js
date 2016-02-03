@@ -12,7 +12,6 @@ import App from './components/App';
 import {StartContainer} from './components/Start';
 import {GameContainer} from './components/Game';
 import styles from 'styles/style.css';
-import './styles/style.css';
 
 
 const socket = io(`${location.protocol}//${location.hostname}:3001`);

@@ -36,12 +36,19 @@ var EndTurnButton = React.createClass({
     whoTurn: PropTypes.string.isRequired
   },
   render: function () {
-    return (
-      <button ref='endTurn'
-                onClick={this.props.nextTurn}>
-                {this.props.whoTurn}
-      </button>
-    );
+    if (this.props.whoTurn === 'you') {
+      return (
+        <button ref='endTurn' 
+        className={styles['end-turn-you']} 
+        onClick={this.props.nextTurn} >
+        </button>
+      );
+    } else {
+      return (
+        <button ref='endTurn' className={styles['end-turn-enemy']}>
+        </button>
+      );
+    }
   }
 });
 

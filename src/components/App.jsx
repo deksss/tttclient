@@ -1,10 +1,10 @@
 import React from 'react';
 import {ConnectionStateContainer} from './ConnectionState';
-import 'style.css';
+import styles from 'styles/style.css';
 
 export default React.createClass({
   render: function() {
-    return <div className = 'app'>
+    return <div className = {styles['app']}>
       <ConnectionStateContainer />
       {this.props.children}
     </div>

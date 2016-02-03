@@ -10,6 +10,13 @@ body,
   margin: 0;
 }
 
+button, 
+button:active, 
+button:focus {
+    outline: none;
+}
+
+
 .turn {
   position: relative;
   left: 150px;
@@ -652,4 +659,42 @@ body,
     transform: translate(+1px, 0);
      opacity: 1;
   }
+}
+
+.end-turn-you {
+  z-index: 1;
+  width:153px;
+  height:99px;
+  background-image: url("assets/end_turn_active1.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  background-color: transparent;
+  border: none;
+  animation: rotate-up 1s linear 1;
+  transform: rotate(0deg);
+}
+
+.end-turn-enemy {
+  z-index: 1;
+  width:153px;
+  height:99px;
+  background-image: url("assets/end_turn_active1.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  background-color: transparent;
+  border: none; 
+  animation: rotate-down 1s linear 1;
+  transform: rotate(180deg);
+}
+
+@keyframes rotate-down {
+  0%  {transform: rotate(0deg);}
+  100% {transform: rotate(180deg);}   
+}
+
+@keyframes rotate-up {
+  0%  {transform: rotate(180deg);}
+  100% {transform: rotate(0deg);}   
 }
