@@ -23,6 +23,19 @@ function setConnectionState (state, connectionState, connected) {
   }));
 }
 
+function setPlayerData (state) {
+  const yourName = state.get('yourName') || '';
+  if (yourName === 'P1') {
+    return state.set('hand', state.get('players').get(0).get('hand'))
+                .set('selectedCard', state.get('players').get(0).get('selectedCard'));
+  } else if (yourName === 'P2') {
+    return state.set('hand', state.get('players').get(1).get('hand'))
+                .set('selectedCard', state.get('players').get(1).get('selectedCard'));
+  } else {
+    return state;
+  }
+}
+
 function setState (state, newState) {
   if (newState) {
     console.log('new state have:');
@@ -34,6 +47,12 @@ function setState (state, newState) {
     if (newState.ready) {
       result = whoTurn(result);
     }
+    if (!state.get('playerNumber') || state.get('playerNumber') === -1) {
+      result = setYourPlayerNumber(result);
+    }
+
+    result = setPlayerData(result);
+
     return result;
   }
 }
@@ -48,7 +67,7 @@ function setRoomId (state, roomId) {
 }
 
 function setPlayerHand (state, playerHand) {
-  return state.set('playerHand', playerHand);
+  return state.set('hand', playerHand);
 }
 
 function setEnemyHand (state, enemyHand) {
@@ -78,12 +97,23 @@ function whoTurn (state) {
 function setYourName (state) {
   const id = state.get('clientId');
   const findResult = state.get('players').find(p => p.get('id') === id);
-  let name = '';
+  var name = '';
   if (findResult && findResult.get('name')) {
     name = findResult.get('name');
     return state.set('yourName', name);
   } else {
     return state.set('yourName', '');
+  }
+}
+
+//for delete:
+export function setYourPlayerNumber (state) {
+  if (state.get('yourName') && state.get('yourName') === 'P1') {
+    return state.set('playerNumber', 0);
+  } else if (state.get('yourName') && state.get('yourName') === 'P2') {
+    return state.set('playerNumber', 1);
+  } else {
+    return state.set('playerNumber', -1);
   }
 }
 
@@ -110,9 +140,11 @@ export default function (state = Map(), action) {
     case 'SET_ROOM_ID':
       return setRoomId(state, action.roomId);
     case 'JOIN_ROOM':
-        return joinRoom(state);
+      return joinRoom(state);
     case 'CREATE_ROOM':
-        return createRoom(state);
+      return createRoom(state);
+    case 'SET_NUMBER':
+      return setYourPlayerNumber(state);
   }
   return state;
 }

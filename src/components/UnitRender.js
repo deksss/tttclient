@@ -6,6 +6,7 @@ var Unit = React.createClass({
     data: PropTypes.object.isRequired
   },
   render: function () {
+
     return (
        <div className={styles['unit']}>
              <div className={styles['unit-top']}>
@@ -24,7 +25,11 @@ var Unit = React.createClass({
                <div className={styles['unit-foot-atk']}>{this.props.data.atk}</div>
               <div className={styles['unit-foot-dr']}></div>
             </div>
-            <div className={styles['unit-info']}> {this.props.data.info}</div>
+            <div className={styles['unit-info']}> 
+              <div>{this.props.data.name}</div>
+              <hr />
+              <div>{this.props.data.info}</div>
+            </div>
           </div>
     );
   }

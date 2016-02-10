@@ -94,3 +94,17 @@ export function restart () {
     type: 'RESTART'
   };
 }
+
+export function cardSelect (id) {
+  return {
+    meta: {remote: true},
+    type: 'SELECT_CARD',
+    cardId: id
+  };
+}
+
+export function setYourPlayerNumber () {
+  return {
+    type: 'SET_NUMBER'
+  };
+}

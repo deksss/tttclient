@@ -34,7 +34,7 @@ export const StartView = React.createClass({
   }
 });
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     clientId: state.get('clientId'),
     roomId: state.get('roomId')

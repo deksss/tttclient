@@ -8,31 +8,23 @@ const PlayerCard = React.createClass({
     data: PropTypes.object.isRequired,
     onCardClick: PropTypes.func.isRequired
   },
-  getInitialState: function () {
-    return {classStr: 'card-container'};
-  },
-  componentWillReceiveProps (nextProps) {
-    const cssStr = styles['card-container'] + ' ' + styles['give-card'];
-    const cssStrSelected = styles['card-container'] + ' ' + styles['card-selected'];
-    if (nextProps.selected) {
-      this.setState({classStr: cssStrSelected});
-    } else {
-      this.setState({classStr: cssStr});
-    }
-  },
-  getDefaultProps () {
-    return {info: '', hp: ''};
-  },
   handleClick: function () {
-    this.props.onCardClick(this.props.data.id);
+    this.props.onCardClick(this.props.data.cardId);
   },
   render: function () {
-    return (      
-      <div className = 'card-container give-card'
+    var cssStr;
+    if (this.props.selected) {
+      cssStr = styles['card-container'] + ' ' + styles['card-selected'];
+    } else {
+      cssStr = styles['card-container'] + ' ' + styles['give-card']; 
+    }  
+    return (
+      <div className = {cssStr}
         onClick = {this.handleClick}>
 				<div className={styles['card']}>
           <Unit className={styles['unit']} data = {this.props.data} />
           <div className={styles['card-info']}>
+            {this.props.data.name}
             {this.props.data.info}
           </div>
         </div>
@@ -45,29 +37,19 @@ const PlayerHand = React.createClass({
   propTypes: {
     playerHand: PropTypes.array.isRequired
   },
-  getInitialState: function () {
-    return {sellectedCardId: -1};
-  },
-  cardSelect: function (id) {
-    const old = this.state.selectedCardId;
-    if (id !== old) {
-      this.setState({selectedCardId: id});
-    } else {
-      this.setState({selectedCardId: -1});
-    }
-  },
   render: function () {
-    var cardSelect = this.cardSelect;
-    var  selectedId = this.state.selectedCardId;
-    var  cardNodes = this.props.playerHand.map(function(card, i) {
-      var selectedThis = card.id === selectedId;
+    var selectedCardId = this.props.selectedCard ? this.props.selectedCard.get('cardId') : false; 
+    var cardSelect = this.props.cardSelect;
+    var cardNodes = this.props.playerHand.toJS().map(function(card, i, ) {    
+                   console.log('card+' + card);
+      var selected = selectedCardId === card.cardId || false;
       return (
-        <PlayerCard selected = {selectedThis} data = {card} key = {i} onCardClick = {cardSelect} />
+        <PlayerCard selected = {selected} data = {card} key = {i} onCardClick = {cardSelect} />
       );
     });
     return (
-      <div className={styles['hand-dwn']}>   
-        {cardNodes}  
+      <div className={styles['hand-dwn']}>
+        {cardNodes}
       </div>
     );
   }

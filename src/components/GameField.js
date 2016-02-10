@@ -41,7 +41,9 @@ const GameField = React.createClass({
     gameField: PropTypes.array.isRequired
   },
   render: function () {
-    var rowNodes = this.props.gameField.map(function (row, i) {
+    var rowNodes = [this.props.gameField.toJS().slice(0, 3),
+                    this.props.gameField.toJS().slice(3, 6),
+                    this.props.gameField.toJS().slice(6, 9)].map(function (row, i) {
       return (
         <GameFieldRow key = {i} data = {row} />
       );
@@ -55,4 +57,3 @@ const GameField = React.createClass({
 });
 
 module.exports = GameField;
-

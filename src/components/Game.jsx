@@ -11,16 +11,18 @@ import '../styles/style.css';
 
 export const GameView = React.createClass({
   mixins: [PureRenderMixin],
-  render: function() { 
+  render: function() {
     return <div className = {styles['game-container']}>
              <div className = {styles['game-container-main']}>
                <EnemyHand enemyHand = {this.props.enemyHand} />
                <GameField gameField = {this.props.gameField} />
-               <PlayerHand playerHand = {this.props.playerHand} />
+               <PlayerHand playerHand = {this.props.playerHand} 
+                           cardSelect = {this.props.cardSelect}
+                           selectedCard = {this.props.selectedCard}/>
              </div>
              <InfoContainer
               whoTurn={this.props.whoTurn}
-              nextTurn={this.props.nextTurn} 
+              nextTurn={this.props.nextTurn}
               yourName={this.props.yourName} />
           </div>
   }
@@ -29,11 +31,12 @@ export const GameView = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    yourName: state.get('yourName'),
+    yourName: state.get('yourName') || 'wait',
     whoTurn: state.get('whoTurn'),
-    gameField: state.get('gameField'),
+    gameField: state.get('field') || [],
     enemyHand: state.get('enemyHand'),
-    playerHand: state.get('playerHand')
+    playerHand: state.get('hand'),
+    selectedCard: state.get('selectedCard')
   }
 }
 

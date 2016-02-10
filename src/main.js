@@ -5,7 +5,8 @@ import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import io from 'socket.io-client';
 import reducer from './reducer';
-import {setClientId, setState, setConnectionState, setField, setPlayerHand, setEnemyHand, setRoomId} from './action_creators';
+import {setClientId, setState, setConnectionState, setField, setPlayerHand, 
+        setEnemyHand, setRoomId, setYourPlayerNumber} from './action_creators';
 import remoteActionMiddleware from './remote_action_middleware';
 import getClientId from './client_id';
 import App from './components/App';
@@ -22,7 +23,7 @@ socket.on('state', function (state) {
   const roomId = store.getState().get('roomId');
   console.log('roomID:' + roomId);
   console.log(state);
-  store.dispatch(setState(state[roomId]))  
+  store.dispatch(setState(state[roomId]))
 });
 
 export function sendCreate(roomId, playerId) {
@@ -32,7 +33,6 @@ export function sendCreate(roomId, playerId) {
 
 export function sendJoin(roomId, playerId) {
   socket.emit('join', roomId, playerId);
-  console.log('send join room');
 }
 
 
@@ -59,17 +59,14 @@ const createStoreWithMiddleware = applyMiddleware(
 const store = createStoreWithMiddleware(reducer);
 store.dispatch(setClientId(getClientId()));
 
-store.dispatch(setField(
-  [['empty', 'empty', 'empty'],
-  ['empty', 'empty', 'empty'],
-  ['empty', 'empty', 'empty']]));
-
 store.dispatch(setPlayerHand([
   {id: 1, info: 'cost 2 mana', hp: 10, atk: 1},
   {id: 2, info: 'cost 4 mana', hp: 5, atk: 1},
   {id: 3, info: 'cost 6 mana', hp: 9, atk: 6}]));
 
 store.dispatch(setEnemyHand([{id: 1}, {id: 2}, {id: 3}]));
+
+store.dispatch(setYourPlayerNumber());
 
 const routes = <Route component={App}>
   <Route path='/' component={StartContainer} />
