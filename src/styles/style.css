@@ -270,7 +270,18 @@ button:focus {
     width: 40px;
     height: 60px;
   }
-  .atk-arrows {}
+  .atk-arrow-blue {
+    background-image: url('assets/arrows-blue-inactive-80.png');
+  }
+  .atk-arrow-green {
+    background-image: url('assets/arrows-green-inactive-80.png');
+  }
+  .atk-arrow-blue-active {
+    background-image: url('assets/arrows-blue-80.png');
+  }
+  .atk-arrow-green-active {
+    background-image: url('assets/arrows-green-80.png');  
+  }
 }
 
 @media screen and (min-height: 700px) {
@@ -290,6 +301,18 @@ button:focus {
     width: 100px;
     height: 148px;
   }
+   .atk-arrow-blue {
+    background-image: url('assets/arrows-blue-inactive-120.png');
+  }
+  .atk-arrow-green {
+    background-image: url('assets/arrows-green-inactive-120.png');
+  }
+  .atk-arrow-blue-active {
+    background-image: url('assets/arrows-blue-120.png');
+  }
+  .atk-arrow-green-active {
+    background-image: url('assets/arrows-green-120.png');  
+  }
 }
 
 @media screen and (min-height: 1000px) {
@@ -308,6 +331,18 @@ button:focus {
   .card-enemy {
     width: 122px;
     height: 180px;
+  }
+  .atk-arrow-blue {
+    background-image: url('assets/arrows-blue-inactive.png');
+  }
+  .atk-arrow-green {
+    background-image: url('assets/arrows-green-inactive.png');
+  }
+  .atk-arrow-blue-active {
+    background-image: url('assets/arrows-blue.png');
+  }
+  .atk-arrow-green-active {
+    background-image: url('assets/arrows-green.png');  
   }
 }
 

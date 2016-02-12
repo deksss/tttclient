@@ -103,6 +103,14 @@ export function cardSelect (id) {
   };
 }
 
+export function cellClick (id) {
+  return {
+    meta: {remote: true},
+    type: 'SET_CARD',
+    cellId: id
+  };
+}
+
 export function setYourPlayerNumber () {
   return {
     type: 'SET_NUMBER'

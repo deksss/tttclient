@@ -15,10 +15,12 @@ export const GameView = React.createClass({
     return <div className = {styles['game-container']}>
              <div className = {styles['game-container-main']}>
                <EnemyHand enemyHand = {this.props.enemyHand} />
-               <GameField gameField = {this.props.gameField} />
+               <GameField gameField = {this.props.gameField}
+                          cellClick = {this.props.cellClick} />
                <PlayerHand playerHand = {this.props.playerHand} 
                            cardSelect = {this.props.cardSelect}
-                           selectedCard = {this.props.selectedCard}/>
+                           selectedCard = {this.props.selectedCard}
+                           yourName={this.props.yourName}/>
              </div>
              <InfoContainer
               whoTurn={this.props.whoTurn}
