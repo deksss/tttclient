@@ -99,7 +99,7 @@ export function cardSelect (id) {
   return {
     meta: {remote: true},
     type: 'SELECT_CARD',
-    cardId: id
+    id: id
   };
 }
 

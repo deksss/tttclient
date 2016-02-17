@@ -25,15 +25,27 @@ const GameFieldCell = React.createClass({
   propTypes: {
     data: PropTypes.object.isRequired
   },
+  getArrowCss: function () {
+    if (this.props.data.unit) {
+      const name = this.props.data.owner === 0 ?  'atk-arrow-green' : 'atk-arrow-blue';
+      const ready =  this.props.data.unit.ready === true ? '-active' : '';
+      return name + ready;
+    } else {
+      return '';
+    }
+  },
   handleClick: function () {
     this.props.cellClick(this.props.data.id);
     console.log('cleick catc');
   },
   render: function () {
-    const unit = this.props.data.unit || {info:'', hp: '', atk:''}; 
+    const yourName = this.props.yourName || '';
+    const unit = this.props.data.unit || {info:'', hp: '', atk:'', direction: []};
+    const arrowCss = this.getArrowCss();
     return (
       <div className={styles['cell']} onClick = {this.handleClick}>
-        <Unit className = 'unit' data = {unit} />
+        <Unit className = 'unit' data = {unit}
+              arrowCss = {arrowCss} />
         <div className = {styles['unit-info']}>
           {unit.info}
         </div>

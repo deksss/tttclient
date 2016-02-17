@@ -1,22 +1,24 @@
 import styles from 'styles/style.css';
 import React, { PropTypes } from 'react';
 
-
-
 var Unit = React.createClass({
   propTypes: {
     data: PropTypes.object.isRequired,
     arrowCss: PropTypes.object.isRequired
   },
   getOpacity: function(direction) {
-    const directArr = this.props.data.direction || [];
-    if (directArr.find(val => val === direction)) {
+    if (this.props.data &&
+        this.props.data.direction.find(val => val === direction)) {
       return 1;
     }  else {
       return 0
     }
   },
   render: function () {
+    const hp = this.props.data ? this.props.data.hp : '';
+    const atk = this.props.data ? this.props.data.atk : '';
+    const name = this.props.data ? this.props.data.name : '';
+    const info = this.props.data ? this.props.data.info : '';
     const UStyle = { opacity: this.getOpacity('U') };
     const DStyle = { opacity: this.getOpacity('D') };
     const RStyle = { opacity: this.getOpacity('R') };
@@ -25,10 +27,11 @@ var Unit = React.createClass({
     const URStyle = { opacity: this.getOpacity('UR') };
     const DLStyle = { opacity: this.getOpacity('DL') };
     const DRStyle = { opacity: this.getOpacity('DR') };
+    const backImgStl = styles['unit-' + this.props.data.sprite];
     console.log(styles[this.props.arrowCss]);
     const arrowPost =  ' ' + styles[this.props.arrowCss];
     return (
-       <div className={styles['unit']}>
+       <div className={styles['unit'] + ' ' +backImgStl}>
              <div className={styles['unit-top']}>
              <div style = {ULStyle} className={ styles['unit-top-ul'] + arrowPost }></div>
               <div style = {UStyle} className={styles['unit-top-u'] + arrowPost}></div>
@@ -40,19 +43,19 @@ var Unit = React.createClass({
             </div>
             <div className={styles['unit-foot']}>
               <div style = {DLStyle} className={styles['unit-foot-dl'] + arrowPost}></div>
-               <div className={styles['unit-foot-hp']}> 
-               {this.props.data.hp}
+               <div className={styles['unit-foot-hp']}>
+               {hp}
                </div>
               <div style = {DStyle} className={styles['unit-foot-d'] + arrowPost}></div>
                <div className={styles['unit-foot-atk']}>
-               {this.props.data.atk}
+               {atk}
                </div>
               <div style = {DRStyle} className={styles['unit-foot-dr'] + arrowPost}></div>
             </div>
-            <div className={styles['unit-info']}> 
-              <div>{this.props.data.name}</div>
+            <div className={styles['unit-info']}>
+              <div>{name}</div>
               <hr />
-              <div>{this.props.data.info}</div>
+              <div>{info}</div>
             </div>
           </div>
     );

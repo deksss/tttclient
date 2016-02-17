@@ -10,25 +10,26 @@ const PlayerCard = React.createClass({
     arrowCss:  PropTypes.string.isRequired
   },
   handleClick: function () {
-    this.props.onCardClick(this.props.data.cardId);
+    this.props.onCardClick(this.props.data.id);
   },
   render: function () {
     var cssStr;
     if (this.props.selected) {
       cssStr = styles['card-container'] + ' ' + styles['card-selected'];
     } else {
-      cssStr = styles['card-container'] + ' ' + styles['give-card']; 
-    }  
+      cssStr = styles['card-container'] + ' ' + styles['give-card'];
+    }
     return (
       <div className = {cssStr}
         onClick = {this.handleClick}>
 				<div className={styles['card']}>
-          <Unit className={styles['unit']} 
-                data = {this.props.data}
+          <Unit className={styles['unit']}
+                data = {this.props.data.unit}
                 arrowCss = {this.props.arrowCss} />
           <div className={styles['card-info']}>
-            {this.props.data.name}
-            {this.props.data.info}
+            {this.props.data.unit.name}
+            <br />
+            {this.props.data.unit.info}
           </div>
         </div>
       </div>
@@ -38,29 +39,31 @@ const PlayerCard = React.createClass({
 
 const PlayerHand = React.createClass({
   propTypes: {
-    yourName: PropTypes.string.isRequired, 
+    yourName: PropTypes.string.isRequired,
     playerHand: PropTypes.array.isRequired
   },
   getArrowCss: function (player, active) {
     const name = player === 'P1' ?  'atk-arrow-green' : 'atk-arrow-blue';
     const ready =  active === true ? 'active' : '';
-    return name + ready; 
+    return name + ready;
   },
   render: function () {
-    var selectedCardId = this.props.selectedCard ? this.props.selectedCard.get('cardId') : false; 
+    var selectedCardId = this.props.selectedCard ? this.props.selectedCard.get('id') : false;
     var cardSelect = this.props.cardSelect;
     const yourName = this.props.yourName || '';
     const getArrowCss = this.getArrowCss;
-    var cardNodes = this.props.playerHand.toJS().map(function(card, i) {    
-      const selected = selectedCardId === card.cardId || false;
+    var cardNodes = this.props.playerHand.toJS().map(function(card, i) {
+      const selected = selectedCardId === card.id || false;
       const arrowCss = getArrowCss(yourName, card.ready);
-      return (
-        <PlayerCard arrowCss = {arrowCss} 
-                    selected = {selected} 
-                    data = {card} 
-                    key = {i} 
-                    onCardClick = {cardSelect} />
-      );
+      if (card.unit) {
+        return (
+          <PlayerCard arrowCss = {arrowCss}
+                      selected = {selected}
+                      data = {card}
+                      key = {i}
+                      onCardClick = {cardSelect} />
+        );
+      }
     });
     return (
       <div className={styles['hand-dwn']}>

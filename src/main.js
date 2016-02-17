@@ -5,7 +5,7 @@ import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import io from 'socket.io-client';
 import reducer from './reducer';
-import {setClientId, setState, setConnectionState, setField, setPlayerHand, 
+import {setClientId, setState, setConnectionState, setField, setPlayerHand,
         setEnemyHand, setRoomId, setYourPlayerNumber} from './action_creators';
 import remoteActionMiddleware from './remote_action_middleware';
 import getClientId from './client_id';
@@ -21,8 +21,6 @@ socket.on('state', function (state) {
   console.log('state before merge with server state');
   console.log(store.getState());
   const roomId = store.getState().get('roomId');
-  console.log('roomID:' + roomId);
-  console.log(state);
   store.dispatch(setState(state[roomId]))
 });
 

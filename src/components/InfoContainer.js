@@ -38,8 +38,8 @@ var EndTurnButton = React.createClass({
   render: function () {
     if (this.props.whoTurn === 'you') {
       return (
-        <button ref='endTurn' 
-        className={styles['end-turn-you']} 
+        <button ref='endTurn'
+        className={styles['end-turn-you']}
         onClick={this.props.nextTurn} >
         </button>
       );
@@ -60,6 +60,8 @@ var PlayerInfo = React.createClass({
     return (
       <div className={styles['player-info']}>
          {this.props.yourName}
+         <br />
+         {this.props.yourHP}
       <div className={styles['deck player-deck']}></div>
       </div>
     );
@@ -81,7 +83,7 @@ var InfoContainer = React.createClass({
         <EndTurnButton
         whoTurn={this.props.whoTurn}
         nextTurn={this.props.nextTurn} />
-        <PlayerInfo yourName={this.props.yourName} />
+      <PlayerInfo yourName={this.props.yourName} yourHP={this.props.yourHP}/>
         <Link to='/'>Go Start</Link>
       </div>
     );

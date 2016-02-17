@@ -27,10 +27,12 @@ function setPlayerData (state) {
   const yourName = state.get('yourName') || '';
   if (yourName === 'P1') {
     return state.set('hand', state.get('players').get(0).get('hand'))
-                .set('selectedCard', state.get('players').get(0).get('selectedCard'));
+                .set('selectedCard', state.get('players').get(0).get('selectedCard'))
+                .set('hp', state.get('players').get(0).get('hp'));
   } else if (yourName === 'P2') {
     return state.set('hand', state.get('players').get(1).get('hand'))
-                .set('selectedCard', state.get('players').get(1).get('selectedCard'));
+                .set('selectedCard', state.get('players').get(1).get('selectedCard'))
+                .set('hp', state.get('players').get(1).get('hp'));
   } else {
     return state;
   }

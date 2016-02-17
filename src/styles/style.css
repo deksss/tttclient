@@ -111,7 +111,6 @@ button:focus {
   justify-content: flex-start;
   align-items: flex-start;
   align-content: flex-start;
-  border-bottom: 1px solid grey;
   width: auto;
   margin-bottom: 1rem;
 }
@@ -123,41 +122,40 @@ button:focus {
   justify-content: flex-start;
   align-items: flex-start;
   align-content: flex-start;
-  border-top: 1px solid grey;
   width: auto;
   margin-top: 1rem;
 }
 
-#myCard1 {
+.myCard1 {
             transform: rotate(-11deg);
             margin-bottom:-0.7rem;
 }
 
-#myCard2 {
+.myCard2 {
             transform: rotate(-5deg);
 
 }
 
-#myCard3 {
+.myCard3 {
             transform: rotate(1deg);
 
 }
 
-#myCard4 {
+.myCard4 {
             transform: rotate(7deg);
             margin-bottom:-0.2rem;
 }
 
-#myCard5 {
+.myCard5 {
             transform: rotate(10deg);
             margin-bottom:-0.9rem;
 }
 
-#myCard1:hover,
-#myCard2:hover,
-#myCard3:hover,
-#myCard4:hover,
-#myCard5:hover  {
+.myCard1:hover,
+.myCard2:hover,
+.myCard3:hover,
+.myCard4:hover,
+.myCard5:hover  {
    transform: rotate(0deg);
 }
 
@@ -167,13 +165,6 @@ button:focus {
   border: 1px solid red;
   width: auto;
 }
-
-.ememy-info { }
-
-.game-info-main {}
-
-
-.player-info {}
 
 .card-container:hover {
   overflow: visible;
@@ -262,6 +253,9 @@ button:focus {
     width: 80px;
     height: 80px;
   }
+  .hand-dwn {
+    height: 80px;
+  }
   .card {
     width: 80px;
     height: 120px;
@@ -280,7 +274,7 @@ button:focus {
     background-image: url('assets/arrows-blue-80.png');
   }
   .atk-arrow-green-active {
-    background-image: url('assets/arrows-green-80.png');  
+    background-image: url('assets/arrows-green-80.png');
   }
 }
 
@@ -297,6 +291,9 @@ button:focus {
     width: 122px;
     height: 180px;
   }
+  .hand-dwn {
+    height: 120px;
+  }
   .card-enemy {
     width: 100px;
     height: 148px;
@@ -311,7 +308,7 @@ button:focus {
     background-image: url('assets/arrows-blue-120.png');
   }
   .atk-arrow-green-active {
-    background-image: url('assets/arrows-green-120.png');  
+    background-image: url('assets/arrows-green-120.png');
   }
 }
 
@@ -328,6 +325,9 @@ button:focus {
     width: 200px;
     height: 295px;
   }
+  .hand-dwn {
+    height: 200px;
+  }
   .card-enemy {
     width: 122px;
     height: 180px;
@@ -342,7 +342,7 @@ button:focus {
     background-image: url('assets/arrows-blue.png');
   }
   .atk-arrow-green-active {
-    background-image: url('assets/arrows-green.png');  
+    background-image: url('assets/arrows-green.png');
   }
 }
 
@@ -743,4 +743,28 @@ button:focus {
     100% {transform: rotate(0deg);
     background-image: url("assets/end_turn_active1.png");
   }
+}
+
+.unit-ram {
+  background-image: url("assets/ram.png");
+}
+
+.unit-knight {
+  background-image: url("assets/knight.png");
+}
+
+.unit-swordsman {
+  background-image: url("assets/swordsman.png");
+}
+
+.unit-assasin {
+  background-image: url("assets/basic-assassin.png");
+}
+
+.unit-dog {
+  background-image: url("assets/dog.png");
+}
+
+.unit-dualist {
+  background-image: url("assets/dualist.png");
 }
