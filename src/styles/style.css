@@ -355,12 +355,7 @@ button:focus {
 }
 
 .unit-dead {
-  -webkit-filter: grayscale(0.5);
-  filter: grayscale(0.5);
-  -webkit-filter: blur(3px);
-  filter: blur(3px);
-  -webkit-filter: brightness(34%);
-  filter: brightness(34%);
+  filter: grayscale(0.5) blur(1px) brightness(50%);
 }
 
 .card .unit {

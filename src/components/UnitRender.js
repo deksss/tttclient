@@ -27,11 +27,11 @@ var Unit = React.createClass({
     const URStyle = { opacity: this.getOpacity('UR') };
     const DLStyle = { opacity: this.getOpacity('DL') };
     const DRStyle = { opacity: this.getOpacity('DR') };
-    const backImgStl = styles['unit-' + this.props.data.sprite];
-    console.log(styles[this.props.arrowCss]);
+    const backImg = styles['unit-' + this.props.data.sprite];
     const arrowPost =  ' ' + styles[this.props.arrowCss];
+    const dead = this.props.died ? ' ' + styles['unit-dead'] : '';
     return (
-       <div className={styles['unit'] + ' ' +backImgStl}>
+       <div className={styles['unit'] + ' ' + backImg + dead}>
              <div className={styles['unit-top']}>
              <div style = {ULStyle} className={ styles['unit-top-ul'] + arrowPost }></div>
               <div style = {UStyle} className={styles['unit-top-u'] + arrowPost}></div>

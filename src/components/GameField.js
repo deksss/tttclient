@@ -41,10 +41,11 @@ const GameFieldCell = React.createClass({
   render: function () {
     const yourName = this.props.yourName || '';
     const unit = this.props.data.unit || {info:'', hp: '', atk:'', direction: []};
+    const died = this.props.data.died;
     const arrowCss = this.getArrowCss();
     return (
       <div className={styles['cell']} onClick = {this.handleClick}>
-        <Unit className = 'unit' data = {unit}
+        <Unit className = 'unit' data = {unit} died = {died}
               arrowCss = {arrowCss} />
         <div className = {styles['unit-info']}>
           {unit.info}
