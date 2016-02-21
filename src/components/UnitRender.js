@@ -6,7 +6,14 @@ var Unit = React.createClass({
     data: PropTypes.object.isRequired,
     arrowCss: PropTypes.object.isRequired
   },
-  getOpacity: function(direction) {
+  getAtkCss: function (direction) {
+   if (direction) {
+     return ' ' + styles['anim-atk-' + direction];
+   } else {
+     return '';
+   }
+  },
+  getOpacity: function (direction) {
     if (this.props.data &&
         this.props.data.direction.find(val => val === direction)) {
       return 1;
@@ -30,8 +37,10 @@ var Unit = React.createClass({
     const backImg = styles['unit-' + this.props.data.sprite];
     const arrowPost =  ' ' + styles[this.props.arrowCss];
     const dead = this.props.died ? ' ' + styles['unit-dead'] : '';
+    const atkCss = this.getAtkCss(this.props.atkDirect);
+    console.log('atk css: ' + atkCss);
     return (
-       <div className={styles['unit'] + ' ' + backImg + dead}>
+       <div className={styles['unit'] + ' ' + backImg + dead + atkCss}>
              <div className={styles['unit-top']}>
              <div style = {ULStyle} className={ styles['unit-top-ul'] + arrowPost }></div>
               <div style = {UStyle} className={styles['unit-top-u'] + arrowPost}></div>

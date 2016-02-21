@@ -12,8 +12,13 @@ import '../styles/style.css';
 export const GameView = React.createClass({
   mixins: [PureRenderMixin],
   render: function() {
-    console.log('hp ' + this.props.yourHP);
-    return <div className = {styles['game-container']}>
+    if (this.props.winner) {
+      alert(this.props.winner);
+    }
+    if (!this.props.allReady) {
+      return <div>wait all players, roomId: {this.props.roomId}</div>
+    } else {
+      return <div className = {styles['game-container']}>
              <div className = {styles['game-container-main']}>
                <EnemyHand enemyHand = {this.props.enemyHand} />
                <GameField gameField = {this.props.gameField}
@@ -28,20 +33,24 @@ export const GameView = React.createClass({
               nextTurn={this.props.nextTurn}
               yourName={this.props.yourName}
               yourHP={this.props.yourHP} />
-          </div>
+           </div>
+    }      
   }
 });
 
 
 function mapStateToProps(state) {
   return {
-    yourName: state.get('yourName') || 'wait',
+    allReady: state.get('allReady'),
+    roomId: state.get('roomId'),
+    yourName: state.get('yourName'),
     whoTurn: state.get('whoTurn'),
     gameField: state.get('field') || [],
     enemyHand: state.get('enemyHand'),
     playerHand: state.get('hand'),
     selectedCard: state.get('selectedCard'),
-    yourHP: state.get('hp') || ''
+    yourHP: state.get('hp') || '',
+    winner: state.get('winner') || false,
   }
 }
 

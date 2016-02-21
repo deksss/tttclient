@@ -13,15 +13,30 @@ import App from './components/App';
 import {StartContainer} from './components/Start';
 import {GameContainer} from './components/Game';
 import styles from 'styles/style.css';
+import List from 'immutable';
 
 
 const socket = io(`${location.protocol}//${location.hostname}:3001`);
 
 socket.on('state', function (state) {
-  console.log('state before merge with server state');
-  console.log(store.getState());
   const roomId = store.getState().get('roomId');
-  store.dispatch(setState(state[roomId]))
+  if (state[roomId].fieldAnimation && state[roomId].fieldAnimation.length > 0) {
+    console.log(state[roomId].fieldAnimation);
+    var maxLoops = state[roomId].fieldAnimation.length;
+    var counter = 0;
+    (function next() {
+        if (counter++ >= maxLoops) return;
+        setTimeout(function() {
+          store.dispatch(setField(state[roomId].fieldAnimation[counter]));
+            next();
+        }, 1000);
+    })();
+    setTimeout(function() {
+      store.dispatch(setState(state[roomId]));
+    }, 1001*maxLoops);
+  } else {
+    store.dispatch(setState(state[roomId]));
+  }
 });
 
 export function sendCreate(roomId, playerId) {

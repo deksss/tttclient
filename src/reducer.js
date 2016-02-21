@@ -1,4 +1,4 @@
-import {Map} from 'immutable';
+import {Map, List} from 'immutable';
 import {sendJoin, sendCreate} from './main';
 import uuid from 'uuid';
 
@@ -54,13 +54,12 @@ function setState (state, newState) {
     }
 
     result = setPlayerData(result);
-
-    return result;
+    return result.set('allReady', newState.ready);
   }
 }
 
 function setField (state, field) {
-  return state.set('gameField', field);
+  return state.set('field', List(field));
 }
 
 function setRoomId (state, roomId) {

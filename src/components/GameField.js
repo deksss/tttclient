@@ -36,17 +36,18 @@ const GameFieldCell = React.createClass({
   },
   handleClick: function () {
     this.props.cellClick(this.props.data.id);
-    console.log('cleick catc');
   },
   render: function () {
     const yourName = this.props.yourName || '';
     const unit = this.props.data.unit || {info:'', hp: '', atk:'', direction: []};
     const died = this.props.data.died;
     const arrowCss = this.getArrowCss();
+    const dmgGet =  this.props.data.dmgGet || '';
+    const atkDirect =  this.props.data.atkDirect || '';
     return (
       <div className={styles['cell']} onClick = {this.handleClick}>
         <Unit className = 'unit' data = {unit} died = {died}
-              arrowCss = {arrowCss} />
+              arrowCss = {arrowCss} atkDirect = {atkDirect}/>
         <div className = {styles['unit-info']}>
           {unit.info}
         </div>

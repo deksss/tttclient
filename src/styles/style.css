@@ -525,50 +525,50 @@ button:focus {
       width:200px;
   }
 
-  .anim-atk-r {
+  .anim-atk-R {
   position: relative;
   animation: atk-r 0.4s linear 0.1s 1;
     z-index: 999;
 }
 
-.anim-atk-l {
+.anim-atk-L {
   position: relative;
   animation: atk-l 0.4s linear 0.1s 1;
     z-index: 999;
 }
 
-.anim-atk-u {
+.anim-atk-U {
   position: relative;
   animation: atk-u 0.4s linear 0.1s 1;
     z-index: 999;
 }
 
-.anim-atk-d {
+.anim-atk-D {
   position: relative;
   animation: atk-d 0.4s linear 0.1s 1;
   z-index: 999;
     z-index: 999;
 }
 
-.anim-atk-u-r {
+.anim-atk-UR {
   position: relative;
   animation: atk-u-r 0.4s linear 0.1s 1;
     z-index: 999;
 }
 
-.anim-atk-u-l {
+.anim-atk-UL {
   position: relative;
   animation: atk-u-l 0.4s linear 0.1s 1;
     z-index: 999;
 }
 
-.anim-atk-d-r {
+.anim-atk-DR {
   position: relative;
   animation: atk-d-r 0.4s linear 0.1s 1;
     z-index: 999;
 }
 
-.anim-atk-d-l {
+.anim-atk-DL {
   position: relative;
   animation: atk-d-l 0.4s linear 0.1s 1;
     z-index: 999;
