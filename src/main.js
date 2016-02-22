@@ -27,13 +27,13 @@ socket.on('state', function (state) {
     (function next() {
         if (counter++ >= maxLoops) return;
         setTimeout(function() {
-          store.dispatch(setField(state[roomId].fieldAnimation[counter]));
+          store.dispatch(setField(state[roomId].fieldAnimation[counter-1]));
             next();
         }, 1000);
     })();
     setTimeout(function() {
       store.dispatch(setState(state[roomId]));
-    }, 1001*maxLoops);
+    }, 1000*(maxLoops+1));
   } else {
     store.dispatch(setState(state[roomId]));
   }
