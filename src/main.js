@@ -19,8 +19,11 @@ import List from 'immutable';
 const socket = io(`${location.protocol}//${location.hostname}:3001`);
 
 socket.on('state', function (state) {
+  console.log('rooms from server' + state['rooms']);
   const roomId = store.getState().get('roomId');
-  if (state[roomId].fieldAnimation && state[roomId].fieldAnimation.length > 0) {
+  if (state[roomId] && 
+      state[roomId].fieldAnimation && 
+      state[roomId].fieldAnimation.length > 0) {
     console.log(state[roomId].fieldAnimation);
     var maxLoops = state[roomId].fieldAnimation.length;
     var counter = 0;
@@ -32,10 +35,10 @@ socket.on('state', function (state) {
         }, 1000);
     })();
     setTimeout(function() {
-      store.dispatch(setState(state[roomId]));
+      store.dispatch(setState(state[roomId], state['rooms']));
     }, 1000*(maxLoops+1));
   } else {
-    store.dispatch(setState(state[roomId]));
+    store.dispatch(setState(state[roomId], state['rooms']));
   }
 });
 
@@ -80,6 +83,7 @@ store.dispatch(setPlayerHand([
 store.dispatch(setEnemyHand([{id: 1}, {id: 2}, {id: 3}]));
 
 store.dispatch(setYourPlayerNumber());
+
 
 const routes = <Route component={App}>
   <Route path='/' component={StartContainer} />

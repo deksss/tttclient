@@ -2,18 +2,18 @@ import {Map, List} from 'immutable';
 import {sendJoin, sendCreate} from './main';
 import uuid from 'uuid';
 
-function joinRoom(state) {
-  console.table(state);
-  console.log('tryin join' + state.get('roomId'));
-  sendJoin(state.get('roomId'), state.get('clientId'));
-  return state;
+function joinRoom(state, roomId) {
+  state = setRoomId(state, roomId);
+  sendJoin(roomId, state.get('clientId'));
+  return state.set('roomId', roomId)
+              .set('joined', true);
 }
 
 function createRoom(state) {
   const roomId = uuid.v4();
   state = setRoomId(state, roomId);
   sendCreate(roomId, state.get('clientId'));
-  return state;
+  return state.set('joined', true);
 }
 
 function setConnectionState (state, connectionState, connected) {
@@ -38,7 +38,8 @@ function setPlayerData (state) {
   }
 }
 
-function setState (state, newState) {
+function setState (state, newState, rooms) {
+  console.log('rooms in state set' + rooms)
   if (newState) {
     console.log('new state have:');
     console.log(newState);
@@ -54,7 +55,10 @@ function setState (state, newState) {
     }
 
     result = setPlayerData(result);
-    return result.set('allReady', newState.ready);
+    return result.set('allReady', newState.ready)
+                 .set('rooms', rooms);
+  } else {
+    return state.set('rooms', rooms)
   }
 }
 
@@ -72,7 +76,9 @@ function setPlayerHand (state, playerHand) {
 }
 
 function setEnemyHand (state, enemyHand) {
-  return state.set('enemyHand', enemyHand);
+  return state.set('enemyHand', enemyHand)
+               .set('rooms', List([]))
+               .set('joined', false);
 }
 
 function start (state) {
@@ -125,7 +131,7 @@ export default function (state = Map(), action) {
     case 'SET_CONNECTION_STATE':
       return setConnectionState(state, action.state, action.connected);
     case 'SET_STATE':
-      return setState(state, action.state);
+      return setState(state, action.state, action.rooms);
     case 'PLAYER_START':
       return start(state);
     case 'PLAYER_SET_NAME':
@@ -141,7 +147,7 @@ export default function (state = Map(), action) {
     case 'SET_ROOM_ID':
       return setRoomId(state, action.roomId);
     case 'JOIN_ROOM':
-      return joinRoom(state);
+      return joinRoom(state, action.roomId);
     case 'CREATE_ROOM':
       return createRoom(state);
     case 'SET_NUMBER':

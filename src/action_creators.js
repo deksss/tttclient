@@ -5,9 +5,10 @@ export function setClientId (clientId) {
   };
 }
 
-export function joinRoom () {
+export function joinRoom (roomId) {
   return {
-    type: 'JOIN_ROOM'
+    type: 'JOIN_ROOM',
+    roomId
   };
 }
 
@@ -32,10 +33,11 @@ export function setConnectionState (state, connected) {
   };
 }
 
-export function setState (state) {
+export function setState (state, rooms) {
   return {
     type: 'SET_STATE',
-    state
+    state,
+    rooms: rooms
   };
 }
 
