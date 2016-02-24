@@ -32,7 +32,10 @@ export const GameView = React.createClass({
               whoTurn={this.props.whoTurn}
               nextTurn={this.props.nextTurn}
               yourName={this.props.yourName}
-              yourHP={this.props.yourHP} />
+              yourHP={this.props.yourHP} 
+              enemyHP={this.props.enemyHP}
+              yourDeckLen={this.props.yourDeckLen}
+              enemyDeckLen={this.props.enemyDeckLen}/>
            </div>
     }      
   }
@@ -51,6 +54,9 @@ function mapStateToProps(state) {
     selectedCard: state.get('selectedCard'),
     yourHP: state.get('hp') || '',
     winner: state.get('winner') || false,
+    enemyDeckLen: state.get('enemyDeckLenght') || '',
+    yourDeckLen: state.get('deckLenght') || '',
+    enemyHP: state.get('enemyHp') || ''
   }
 }
 

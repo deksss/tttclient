@@ -28,11 +28,19 @@ function setPlayerData (state) {
   if (yourName === 'P1') {
     return state.set('hand', state.get('players').get(0).get('hand'))
                 .set('selectedCard', state.get('players').get(0).get('selectedCard'))
-                .set('hp', state.get('players').get(0).get('hp'));
+                .set('hp', state.get('players').get(0).get('hp'))
+                .set('deckLenght', state.get('players').get(0).get('deck').count())
+                .set('enemyDeckLenght', state.get('players').get(1).get('deck').count())
+                .set('enemyHp', state.get('players').get(1).get('hp'))
+                .set('enemyHand', state.get('players').get(1).get('hand'));
   } else if (yourName === 'P2') {
     return state.set('hand', state.get('players').get(1).get('hand'))
                 .set('selectedCard', state.get('players').get(1).get('selectedCard'))
-                .set('hp', state.get('players').get(1).get('hp'));
+                .set('hp', state.get('players').get(1).get('hp'))
+                .set('deckLenght', state.get('players').get(1).get('deck').count())
+                .set('enemyDeckLenght', state.get('players').get(0).get('deck').count())
+                .set('enemyHp', state.get('players').get(0).get('hp'))
+                .set('enemyHand', state.get('players').get(0).get('hand'));
   } else {
     return state;
   }

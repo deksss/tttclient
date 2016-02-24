@@ -14,10 +14,12 @@ const EnemyHand = React.createClass({
     enemyHand: PropTypes.array.isRequired
   },
   render: function () {
-    var cardNodes = this.props.enemyHand.map(function (card, i) {
-      return (
-        <EnemyCard key = {i} />
-      );
+    var cardNodes = this.props.enemyHand.toJS().map(function (card, i) {
+      if (card.unit) {
+        return (
+          <EnemyCard key = {i} />
+        );
+      }
     });
     return (
       <div className={styles['hand-up']}>

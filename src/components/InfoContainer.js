@@ -5,8 +5,11 @@ import React, { PropTypes } from 'react';
 var EnemyInfo = React.createClass({
   render: function () {
     return (
-      <div className={styles['ememy-info']}>
-        <div className={styles['deck enemy-deck']}></div>
+      <div className={styles['enemy-info']}>
+     HP: {this.props.enemyHP}
+        <div className={styles['deck']}>
+        Card left: {this.props.enemyDeckLen}
+        </div>  
       </div>
     );
   }
@@ -61,8 +64,10 @@ var PlayerInfo = React.createClass({
       <div className={styles['player-info']}>
          {this.props.yourName}
          <br />
-         {this.props.yourHP}
-      <div className={styles['deck player-deck']}></div>
+        HP: {this.props.yourHP}
+      <div className={styles['deck']}>
+      Card left: {this.props.yourDeckLen}
+      </div>
       </div>
     );
   }
@@ -77,13 +82,18 @@ var InfoContainer = React.createClass({
   render: function () {
     return (
       <div className={styles['game-container-info']}>
-        <EnemyInfo />
+        <EnemyInfo 
+        enemyHP = {this.props.yourHP}
+        enemyDeckLen = {this.props.yourDeckLen} />
         <ScoreBar />
         <LogBarMain />
         <EndTurnButton
         whoTurn={this.props.whoTurn}
         nextTurn={this.props.nextTurn} />
-      <PlayerInfo yourName={this.props.yourName} yourHP={this.props.yourHP}/>
+        <PlayerInfo 
+        yourName = {this.props.yourName}
+        yourHP = {this.props.yourHP}
+        yourDeckLen = {this.props.yourDeckLen} />
         <Link to='/'>Go Start</Link>
       </div>
     );

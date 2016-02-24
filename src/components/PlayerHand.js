@@ -13,11 +13,11 @@ const PlayerCard = React.createClass({
     this.props.onCardClick(this.props.data.id);
   },
   render: function () {
-    var cssStr;
+    var cssStr = styles['card-container'];
     if (this.props.selected) {
-      cssStr = styles['card-container'] + ' ' + styles['card-selected'];
-    } else {
-      cssStr = styles['card-container'] + ' ' + styles['give-card'];
+      cssStr +=  ' ' + styles['card-selected'];
+    } else if (this.props.data.new) {
+      cssStr +=  ' ' + styles['give-card'];
     }
     return (
       <div className = {cssStr}

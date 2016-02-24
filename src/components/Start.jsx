@@ -26,7 +26,7 @@ export const StartView = React.createClass({
   render: function() {
     var join = this.props.joinRoom;
     const roomList =  this.props.rooms.map(function(room, i) { 
-      return (<RoomItem roomId = {room} join = {join} />);
+      return (<RoomItem roomId = {room} join = {join} key ={i} />);
     }) || [];
     if (!this.props.joined) {
       return  (

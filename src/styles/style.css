@@ -16,12 +16,19 @@ button:focus {
     outline: none;
 }
 
+.enemy-info {
+  color: red;
+}
+
+.player-info {
+  color: yellow;
+}
 
 .turn {
   position: relative;
   left: 150px;
   top: 200px;
-  background-color: grey;
+  background-color: white;
   opacity: 0.9;
   font-size: 3em;
   margin-top: -200px;
@@ -32,7 +39,11 @@ button:focus {
 }
 
 .deck {
-  background-color: white;
+  background-image: url("assets/backside.png");
+  background-size: cover;
+  border-radius: 5px;
+  width: 100px;
+  height: 148px;
 }
 
 .end-game {
@@ -113,6 +124,7 @@ button:focus {
   align-content: flex-start;
   width: auto;
   margin-bottom: 1rem;
+  margin-right: 1rem;
 }
 
 .hand-dwn {
@@ -516,13 +528,19 @@ button:focus {
       height: 45px;
       background-color: white;
   }
+  
   .log-bar-main {
       background-color: white;
       padding-left: 2px;
       padding-top: 2px;
       overflow-y: scroll;
-      height: 300px;
+      height: 100px;
       width:200px;
+      opacity: 0.2;
+  }
+
+  .log-bar-main:hover {
+      opacity: 1;
   }
 
   .anim-atk-R {
