@@ -4,15 +4,15 @@ import uuid from 'uuid';
 
 function joinRoom(state, roomId) {
   state = setRoomId(state, roomId);
-  sendJoin(roomId, state.get('clientId'));
+  sendJoin(roomId, state.get('clientId'), state.get('yourName'));
   return state.set('roomId', roomId)
               .set('joined', true);
 }
 
 function createRoom(state) {
-  const roomId = uuid.v4();
+  const roomId = state.get('yourName') + '(' + uuid.v4() + ')' ;
   state = setRoomId(state, roomId);
-  sendCreate(roomId, state.get('clientId'));
+  sendCreate(roomId, state.get('clientId'), state.get('yourName'));
   return state.set('joined', true);
 }
 
@@ -24,8 +24,8 @@ function setConnectionState (state, connectionState, connected) {
 }
 
 function setPlayerData (state) {
-  const yourName = state.get('yourName') || '';
-  if (yourName === 'P1') {
+  const playerSign = state.get('playerSign') || '';
+  if (playerSign === 'P1') {
     return state.set('hand', state.get('players').get(0).get('hand'))
                 .set('selectedCard', state.get('players').get(0).get('selectedCard'))
                 .set('hp', state.get('players').get(0).get('hp'))
@@ -33,7 +33,7 @@ function setPlayerData (state) {
                 .set('enemyDeckLenght', state.get('players').get(1).get('deck').count())
                 .set('enemyHp', state.get('players').get(1).get('hp'))
                 .set('enemyHand', state.get('players').get(1).get('hand'));
-  } else if (yourName === 'P2') {
+  } else if (playerSign === 'P2') {
     return state.set('hand', state.get('players').get(1).get('hand'))
                 .set('selectedCard', state.get('players').get(1).get('selectedCard'))
                 .set('hp', state.get('players').get(1).get('hp'))
@@ -52,8 +52,8 @@ function setState (state, newState, rooms) {
     console.log('new state have:');
     console.log(newState);
     let result = state.merge(newState);
-    if (!state.get('yourName')) {
-      result = setYourName(result);
+    if (!state.get('playerSign')) {
+      result = setplayerSign(result);
     }
     if (newState.ready) {
       result = whoTurn(result);
@@ -99,7 +99,7 @@ function nextTurn (state) {
 
 function whoTurn (state) {
   if (state.get('curPlayer')) {
-    if (state.get('curPlayer') === state.get('yourName')) {
+    if (state.get('curPlayer') === state.get('playerSign')) {
       return state.set('whoTurn', 'you');
     } else {
       return state.set('whoTurn', 'enemy');
@@ -109,27 +109,32 @@ function whoTurn (state) {
   }
 }
 
-function setYourName (state) {
+function setplayerSign (state) {
   const id = state.get('clientId');
   const findResult = state.get('players').find(p => p.get('id') === id);
   var name = '';
   if (findResult && findResult.get('name')) {
     name = findResult.get('name');
-    return state.set('yourName', name);
+    return state.set('playerSign', name);
   } else {
-    return state.set('yourName', '');
+    return state.set('playerSign', '');
   }
 }
 
 //for delete:
 export function setYourPlayerNumber (state) {
-  if (state.get('yourName') && state.get('yourName') === 'P1') {
+  if (state.get('playerSign') && state.get('playerSign') === 'P1') {
     return state.set('playerNumber', 0);
-  } else if (state.get('yourName') && state.get('yourName') === 'P2') {
+  } else if (state.get('playerSign') && state.get('playerSign') === 'P2') {
     return state.set('playerNumber', 1);
   } else {
     return state.set('playerNumber', -1);
   }
+}
+
+function setYourName (state, name) {
+  console.log('name:'  + name);
+  return state.set('yourName', name);
 }
 
 export default function (state = Map(), action) {
@@ -143,7 +148,7 @@ export default function (state = Map(), action) {
     case 'PLAYER_START':
       return start(state);
     case 'PLAYER_SET_NAME':
-      return setYourName(state);
+      return setplayerSign(state);
     case 'NEXT_TURN':
       return nextTurn(state);
     case 'SET_FIELD':
@@ -160,6 +165,8 @@ export default function (state = Map(), action) {
       return createRoom(state);
     case 'SET_NUMBER':
       return setYourPlayerNumber(state);
+    case 'SET_YOUR_NAME':
+      return setYourName(state, action.name)
   }
   return state;
 }

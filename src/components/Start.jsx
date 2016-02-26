@@ -23,15 +23,29 @@ export const RoomItem =  React.createClass({
 
 export const StartView = React.createClass({
   mixins: [PureRenderMixin],
+  handleChange: function(event) {
+    if (event.target.value === 'enter your name here') {
+      this.props.setYourName(' ');
+    } else {
+      this.props.setYourName(event.target.value);
+    }
+  },
   render: function() {
     var join = this.props.joinRoom;
-    const roomList =  this.props.rooms.map(function(room, i) { 
-      return (<RoomItem roomId = {room} join = {join} key ={i} />);
+    const roomList =  this.props.rooms.map(function(room, i) {
+      return (<RoomItem roomId = {room} join = {join} key = {i} />);
     }) || [];
     if (!this.props.joined) {
       return  (
              <div className='start-container'>
               <h1>Hello, your ID: {this.props.clientId}</h1>
+                <input
+                 type="text"
+                 value={this.props.yourName}
+                 onChange={this.handleChange}
+                 onClick={this.handleChange}
+                 onFocus={this.handleChange}
+                />
               <hr />
                 {roomList}
               <hr />
@@ -46,8 +60,8 @@ export const StartView = React.createClass({
              <Link to='/game' onClick={this.props.start} >
                Start
              </Link>
-             ); 
-    }         
+             );
+    }
   }
 });
 
@@ -58,7 +72,8 @@ function mapStateToProps (state) {
     rooms: state.get('rooms') || [],
     clientId: state.get('clientId'),
     roomId: state.get('roomId'),
-    joined: state.get('joined') || false
+    joined: state.get('joined') || false,
+    yourName: state.get('yourName') || 'enter your name here'
   };
 }
 

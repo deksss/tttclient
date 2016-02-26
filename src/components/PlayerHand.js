@@ -39,7 +39,7 @@ const PlayerCard = React.createClass({
 
 const PlayerHand = React.createClass({
   propTypes: {
-    yourName: PropTypes.string.isRequired,
+    playerSign: PropTypes.string.isRequired,
     playerHand: PropTypes.array.isRequired
   },
   getArrowCss: function (player, active) {
@@ -50,11 +50,11 @@ const PlayerHand = React.createClass({
   render: function () {
     var selectedCardId = this.props.selectedCard ? this.props.selectedCard.get('id') : false;
     var cardSelect = this.props.cardSelect;
-    const yourName = this.props.yourName || '';
+    const playerSign = this.props.playerSign || '';
     const getArrowCss = this.getArrowCss;
     var cardNodes = this.props.playerHand.toJS().map(function(card, i) {
       const selected = selectedCardId === card.id || false;
-      const arrowCss = getArrowCss(yourName, card.ready);
+      const arrowCss = getArrowCss(playerSign, card.ready);
       if (card.unit) {
         return (
           <PlayerCard arrowCss = {arrowCss}

@@ -118,3 +118,10 @@ export function setYourPlayerNumber () {
     type: 'SET_NUMBER'
   };
 }
+
+export function setYourName (name) {
+  return {
+    type: 'SET_YOUR_NAME',
+    name: name
+  };
+}

@@ -26,18 +26,18 @@ export const GameView = React.createClass({
                <PlayerHand playerHand = {this.props.playerHand}
                            cardSelect = {this.props.cardSelect}
                            selectedCard = {this.props.selectedCard}
-                           yourName={this.props.yourName}/>
+                           playerSign={this.props.playerSign}/>
              </div>
              <InfoContainer
               whoTurn={this.props.whoTurn}
               nextTurn={this.props.nextTurn}
-              yourName={this.props.yourName}
-              yourHP={this.props.yourHP} 
+              playerSign={this.props.playerSign}
+              yourHP={this.props.yourHP}
               enemyHP={this.props.enemyHP}
               yourDeckLen={this.props.yourDeckLen}
               enemyDeckLen={this.props.enemyDeckLen}/>
            </div>
-    }      
+    }
   }
 });
 
@@ -46,7 +46,7 @@ function mapStateToProps(state) {
   return {
     allReady: state.get('allReady'),
     roomId: state.get('roomId'),
-    yourName: state.get('yourName'),
+    playerSign: state.get('playerSign'),
     whoTurn: state.get('whoTurn'),
     gameField: state.get('field') || [],
     enemyHand: state.get('enemyHand'),

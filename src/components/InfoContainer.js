@@ -57,12 +57,12 @@ var EndTurnButton = React.createClass({
 
 var PlayerInfo = React.createClass({
   propTypes: {
-    yourName: PropTypes.string.isRequired
+    playerSign: PropTypes.string.isRequired
   },
   render: function () {
     return (
       <div className={styles['player-info']}>
-         {this.props.yourName}
+         {this.props.playerSign}
          <br />
         HP: {this.props.yourHP}
       <div className={styles['deck']}>
@@ -77,7 +77,7 @@ var InfoContainer = React.createClass({
   propTypes: {
     nextTurn: PropTypes.func.isRequired,
     whoTurn: PropTypes.string.isRequired,
-    yourName: PropTypes.string.isRequired
+    playerSign: PropTypes.string.isRequired
   },
   render: function () {
     return (
@@ -91,7 +91,7 @@ var InfoContainer = React.createClass({
         whoTurn={this.props.whoTurn}
         nextTurn={this.props.nextTurn} />
         <PlayerInfo 
-        yourName = {this.props.yourName}
+        playerSign = {this.props.playerSign}
         yourHP = {this.props.yourHP}
         yourDeckLen = {this.props.yourDeckLen} />
         <Link to='/'>Go Start</Link>

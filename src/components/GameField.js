@@ -38,7 +38,7 @@ const GameFieldCell = React.createClass({
     this.props.cellClick(this.props.data.id);
   },
   render: function () {
-    const yourName = this.props.yourName || '';
+    const playerSign = this.props.playerSign || '';
     const unit = this.props.data.unit || {info:'', hp: '', atk:'', direction: []};
     const died = this.props.data.died;
     const arrowCss = this.getArrowCss();
