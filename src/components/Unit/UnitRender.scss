@@ -1,0 +1,369 @@
+$break-small: 440px;
+$break-medium: 700px;
+$break-large: 1000px;
+$img-path: './assets/';
+
+@media screen and (min-height: $break-small) {
+  .atk-arrow-blue {
+    background-image: url($img-path + 'arrows-blue-inactive-80.png');
+  }
+  .atk-arrow-green {
+    background-image: url($img-path + 'arrows-green-inactive-80.png');
+  }
+  .atk-arrow-blue-active {
+    background-image: url($img-path + 'arrows-blue-80.png');
+  }
+  .atk-arrow-green-active {
+    background-image: url($img-path + 'arrows-green-80.png');
+  }
+}
+
+@media screen and (min-height: $break-medium) {
+   .atk-arrow-blue {
+    background-image: url($img-path + 'arrows-blue-inactive-120.png');
+  }
+  .atk-arrow-green {
+    background-image: url($img-path + 'arrows-green-inactive-120.png');
+  }
+  .atk-arrow-blue-active {
+    background-image: url($img-path + 'arrows-blue-120.png');
+  }
+  .atk-arrow-green-active {
+    background-image: url($img-path + 'arrows-green-120.png');
+  }
+}
+
+@media screen and (min-height: $break-large) {
+  .atk-arrow-blue {
+    background-image: url($img-path + 'arrows-blue-inactive.png');
+  }
+  .atk-arrow-green {
+    background-image: url($img-path + 'arrows-green-inactive.png');
+  }
+  .atk-arrow-blue-active {
+    background-image: url($img-path + 'arrows-blue.png');
+  }
+  .atk-arrow-green-active {
+    background-image: url($img-path + 'arrows-green.png');
+  }
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+}
+
+
+.unit-dead {
+  filter: grayscale(0.5) blur(1px) brightness(50%);
+}
+
+
+.unit-top {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 15%;
+}
+
+.unit-mid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 70%;
+}
+
+.unit-foot {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 15%;
+}
+
+.unit-top-ul {
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  width: 17%;
+  height: 100%;
+}
+
+.unit-top-ur {
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-position: 15% 0;
+  width: 17%;
+  height: 100%;
+}
+
+.unit-top-u {
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-position: 85% 0;
+  width: 17%;
+  height: 100%;
+  margin-left: 24%;
+  margin-right: 24%;
+  float: left;
+  width: 17%;
+  height: 100%;
+}
+
+.unit-mid-l {
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-position: 58% 0;
+  width: 17%;
+  height: 26%;
+  margin-top: 25%;
+  margin-bottom: 25%;
+}
+
+.unit-mid-r {
+  opacity: 0;
+  background-repeat: no-repeat;
+  //float: right;
+  background-position: 71% 0;
+  width: 17%;
+  height: 26%;
+  margin-top: 25%;
+  margin-bottom: 25%;
+}
+
+.unit-foot-dl {
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-position: 29% 0;
+  width: 17%;
+  height: 100%;
+
+}
+
+.unit-foot-dr {
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-position: 43% 0;
+  width: 17%;
+  height: 100%;
+
+}
+
+.unit-foot-d {
+  opacity: 0;
+  background-repeat: no-repeat;
+  width: 17%;
+  height: 100%;
+  background-position: 99% 99%;
+  float: left;
+  width: 17%;
+  height: 100%;
+
+}
+
+
+
+.unit-foot-hp {
+  color: red;
+  font: 1em Arial, sans-serif;
+  text-shadow: silver 1px 1px 0, silver -1px -1px 0, silver -1px 1px 0, silver 1px -1px 0;
+  text-align: left;
+  width: 24%;
+  height: 100%;
+
+  background-repeat: no-repeat;
+}
+
+
+.unit-foot-atk {
+  color: silver;
+  font: 1em Arial, sans-serif;
+  text-shadow: blue 1px 1px 0, blue -1px -1px 0, blue -1px 1px 0, blue 1px -1px 0;
+  text-align: right;
+  width: 24%;
+  height: 100%;
+
+  background-repeat: no-repeat;
+}
+
+.card-unit {
+  height: 66%;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 90% 90%;
+}
+
+.anim-atk-R {
+  position: relative;
+  animation: atk-r 0.4s linear 0.1s 1;
+  z-index: 999;
+}
+
+.anim-atk-L {
+  position: relative;
+  animation: atk-l 0.4s linear 0.1s 1;
+  z-index: 999;
+}
+
+.anim-atk-U {
+  position: relative;
+  animation: atk-u 0.4s linear 0.1s 1;
+  z-index: 999;
+}
+
+.anim-atk-D {
+  position: relative;
+  animation: atk-d 0.4s linear 0.1s 1;
+  z-index: 999;
+  z-index: 999;
+}
+
+.anim-atk-UR {
+  position: relative;
+  animation: atk-u-r 0.4s linear 0.1s 1;
+  z-index: 999;
+}
+
+.anim-atk-UL {
+  position: relative;
+  animation: atk-u-l 0.4s linear 0.1s 1;
+  z-index: 999;
+}
+
+.anim-atk-DR {
+  position: relative;
+  animation: atk-d-r 0.4s linear 0.1s 1;
+  z-index: 999;
+}
+
+.anim-atk-DL {
+position: relative;
+animation: atk-d-l 0.4s linear 0.1s 1;
+  z-index: 999;
+}
+
+@keyframes atk-r {
+0% {
+ transform: translate(10px, 0);
+}
+50% {
+ transform: translate(20px, 0);
+}
+100% {
+  transform: translate(30px, 0);
+}
+}
+
+@keyframes atk-l {
+0% {
+ transform: translate(-10px, 0);
+}
+50% {
+ transform: translate(-20px, 0);
+}
+100% {
+  transform: translate(-30px, 0);
+}
+}
+
+@keyframes atk-u {
+0% {
+ transform: translate(0, -10px);
+}
+50% {
+ transform: translate(0, -20px);
+}
+100% {
+  transform: translate(0, -30px);
+}
+}
+
+@keyframes atk-d {
+0% {
+ transform: translate(0, 10px);
+}
+50% {
+ transform: translate(0, 20px);
+}
+100% {
+  transform: translate(0, 30px);
+}
+}
+
+@keyframes atk-d-l {
+0% {
+ transform: translate(-10px, 10px);
+}
+50% {
+ transform: translate(-20px, 20px);
+}
+100% {
+  transform: translate(-30px, 30px);
+}
+}
+
+@keyframes atk-d-r {
+0% {
+ transform: translate(10px, 10px);
+}
+50% {
+ transform: translate(20px, 20px);
+}
+100% {
+  transform: translate(30px, 30px);
+}
+}
+
+@keyframes atk-u-r {
+0% {
+ transform: translate(10px, -10px);
+}
+50% {
+ transform: translate(20px, -20px);
+}
+100% {
+  transform: translate(30px, -30px);
+}
+}
+
+@keyframes atk-u-l {
+0% {
+ transform: translate(-10px, -10px);
+}
+50% {
+ transform: translate(-20px, -20px);
+}
+100% {
+  transform: translate(-30px, -30px);
+}
+}
+
+.unit-ram {
+  background-image: url($img-path + "ram.png");
+}
+
+.unit-knight {
+  background-image: url($img-path + "knight.png");
+}
+
+.unit-swordsman {
+  background-image: url($img-path + "swordsman.png");
+}
+
+.unit-assasin {
+  background-image: url($img-path + "basic-assassin.png");
+}
+
+.unit-dog {
+  background-image: url($img-path + "dog.png");
+}
+
+.unit-dualist {
+  background-image: url($img-path + "dualist.png");
+}

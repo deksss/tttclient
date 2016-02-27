@@ -9,9 +9,9 @@ import {setClientId, setState, setConnectionState, setField, setPlayerHand,
         setEnemyHand, setRoomId, setYourPlayerNumber} from './action_creators';
 import remoteActionMiddleware from './remote_action_middleware';
 import getClientId from './client_id';
-import App from './components/App';
-import {StartContainer} from './components/Start';
-import {GameContainer} from './components/Game';
+import App from './components/App/App';
+import {StartContainer} from './components/Start/Start';
+import {GameContainer} from './components/Game/Game';
 import styles from 'styles/style.css';
 import List from 'immutable';
 

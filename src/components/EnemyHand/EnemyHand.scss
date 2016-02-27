@@ -1,0 +1,40 @@
+.card-enemy {
+  background-image: url("assets/backside.png");
+  background-size: cover;
+  border-radius: 5px;
+}
+
+.hand-up {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  width: auto;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+}
+
+@media screen and (min-height: 440px) {
+  .card-enemy {
+    width: 40px;
+    height: 60px;
+  }
+
+}
+
+@media screen and (min-height: 700px) {
+  .card-enemy {
+    width: 100px;
+    height: 148px;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+  .card-enemy {
+    width: 122px;
+    height: 180px;
+  }
+
+}

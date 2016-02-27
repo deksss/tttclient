@@ -1,0 +1,62 @@
+.game-container-info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: stretch;
+}
+
+.end-turn-you {
+  z-index: 1;
+  width:153px;
+  height:99px;
+  background-image: url("assets/end_turn_active1.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  background-color: transparent;
+  border: none;
+  animation: rotate-up 1s linear 1;
+  transform: rotate(0deg);
+}
+
+.end-turn-enemy {
+  z-index: 1;
+  width:153px;
+  height:99px;
+  background-image: url("assets/end_turn_passive1.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  background-color: transparent;
+  border: none;
+  animation: rotate-down 1s linear 1;
+  transform: rotate(180deg);
+}
+
+.score-bar {
+     background-color: white;
+     margin-left:20px
+ }
+
+ @keyframes rotate-down {
+     0%  {
+     transform: rotate(0deg);
+     background-image: url("assets/end_turn_active1.png");
+   }
+     100% {
+     transform: rotate(180deg);
+     background-image: url("assets/end_turn_passive1.png");
+   }
+ }
+
+ @keyframes rotate-up {
+   0%  {
+     transform: rotate(180deg);
+     background-image: url("assets/end_turn_passive1.png");
+   }
+     100% {transform: rotate(0deg);
+     background-image: url("assets/end_turn_active1.png");
+   }
+ }

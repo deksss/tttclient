@@ -1,6 +1,6 @@
-import styles from 'styles/style.css';
+import styles from './GameField.scss';
 import React, { PropTypes } from 'react';
-import Unit from './unitRender';
+import Unit from '../Unit/UnitRender';
 
 const GameFieldRow = React.createClass({
   propTypes: {
@@ -46,8 +46,10 @@ const GameFieldCell = React.createClass({
     const atkDirect =  this.props.data.atkDirect || '';
     return (
       <div className={styles['cell']} onClick = {this.handleClick}>
-        <Unit className = 'unit' data = {unit} died = {died}
-              arrowCss = {arrowCss} atkDirect = {atkDirect}/>
+        <Unit data = {unit} died = {died}
+              arrowCss = {arrowCss} atkDirect = {atkDirect}
+              inCard = {false}
+              />
         <div className = {styles['unit-info']}>
           {unit.info}
         </div>

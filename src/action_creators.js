@@ -125,3 +125,11 @@ export function setYourName (name) {
     name: name
   };
 }
+
+export function selectDeck (deck) {
+  return {
+    meta: {remote: true},
+    deck: deck,
+    type: 'SELECT_DECK'
+  };
+}

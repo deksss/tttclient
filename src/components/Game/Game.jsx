@@ -1,13 +1,12 @@
 import React, { PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
-import * as actionCreators from '../action_creators';
-import EnemyHand from './EnemyHand';
-import GameField from './GameField';
-import PlayerHand from './PlayerHand';
-import InfoContainer from './infoContainer';
-import styles from 'styles/style.css';
-import '../styles/style.css';
+import * as actionCreators from '../../action_creators';
+import EnemyHand from '../EnemyHand/EnemyHand';
+import GameField from '../Field/GameField';
+import PlayerHand from '../PlayerHand/PlayerHand';
+import InfoContainer from '../Info/infoContainer';
+import styles from './Gams.scss';
 
 export const GameView = React.createClass({
   mixins: [PureRenderMixin],

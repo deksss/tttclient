@@ -1,5 +1,5 @@
 import React from 'react';
-import {ConnectionStateContainer} from './ConnectionState';
+import {ConnectionStateContainer} from '../Connection/ConnectionState';
 import styles from 'styles/style.css';
 
 export default React.createClass({

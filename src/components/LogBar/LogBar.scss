@@ -1,0 +1,13 @@
+.log-bar-main {
+    background-color: white;
+    padding-left: 2px;
+    padding-top: 2px;
+    overflow-y: scroll;
+    height: 100px;
+    width:200px;
+    opacity: 0.2;
+}
+
+.log-bar-main:hover {
+    opacity: 1;
+}

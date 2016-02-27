@@ -1,10 +1,8 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
-import * as actionCreators from '../action_creators';
+import * as actionCreators from '../../action_creators';
 import { Link } from 'react-router';
-import '../styles/style.css';
-
 
 export const RoomItem =  React.createClass({
     handleChange: function (event) {
@@ -23,6 +21,9 @@ export const RoomItem =  React.createClass({
 
 export const StartView = React.createClass({
   mixins: [PureRenderMixin],
+  handleDecks: function (event) {
+    this.props.selectDeck(event.target.value)
+  },
   handleChange: function(event) {
     if (event.target.value === 'enter your name here') {
       this.props.setYourName(' ');
@@ -32,6 +33,15 @@ export const StartView = React.createClass({
   },
   render: function() {
     var join = this.props.joinRoom;
+    var deckList = this.props.deckList.map((deck, i) =>
+        <td>
+          <input type = "radio"
+                 name = "deckList"
+                 value = {deck}
+                 key = {i}
+                 onClick = {this.handleDecks} />
+          {deck}
+        </td>);
     const roomList =  this.props.rooms.map(function(room, i) {
       return (<RoomItem roomId = {room} join = {join} key = {i} />);
     }) || [];
@@ -57,9 +67,15 @@ export const StartView = React.createClass({
             );
     } else {
       return (
+              <div>
+               <tr>
+                {deckList}
+               </tr>
+                <hr />
              <Link to='/game' onClick={this.props.start} >
                Start
              </Link>
+           </div>
              );
     }
   }
@@ -73,7 +89,8 @@ function mapStateToProps (state) {
     clientId: state.get('clientId'),
     roomId: state.get('roomId'),
     joined: state.get('joined') || false,
-    yourName: state.get('yourName') || 'enter your name here'
+    yourName: state.get('yourName') || 'enter your name here',
+    deckList: state.get('deckList') || ['mage-deck', 'comander-deck']
   };
 }
 

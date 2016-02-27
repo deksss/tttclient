@@ -1,0 +1,63 @@
+@media screen and (min-height: 440px) {
+  .cell {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media screen and (min-height: 700px) {
+  .cell {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+  .cell {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.cell {
+  margin: 0.5em;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 1em;
+  background-image: url("assets/field-blood.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.unit-info {
+  position:relative;
+  left: 0;
+  top: -40px;
+  opacity: 0;
+  width: 120px;
+  height: 40px;
+  z-index: 9999;
+  background-color: white;
+}
+
+.unit-info:hover {
+  opacity: 0.8;
+}

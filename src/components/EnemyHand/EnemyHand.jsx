@@ -1,7 +1,9 @@
-import styles from 'styles/style.css';
+import styles from './EnemyHand.scss';
 import React, { PropTypes } from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 const EnemyCard = React.createClass({
+  mixins: [PureRenderMixin],
   render: function () {
     return (
       <div className={styles['card-enemy']}></div>
@@ -10,6 +12,7 @@ const EnemyCard = React.createClass({
 });
 
 const EnemyHand = React.createClass({
+  mixins: [PureRenderMixin],
   propTypes: {
     enemyHand: PropTypes.array.isRequired
   },

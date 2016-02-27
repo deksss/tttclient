@@ -1,7 +1,7 @@
-import styles from 'styles/style.css';
+import styles from './PlayerHand.scss';
+import UnitCss from '../Unit/UnitRender.scss';
 import React, { PropTypes } from 'react';
-import Unit from './unitRender';
-import '../styles/style.css';
+import Unit from '../Unit/UnitRender';
 
 const PlayerCard = React.createClass({
   propTypes: {
@@ -23,9 +23,10 @@ const PlayerCard = React.createClass({
       <div className = {cssStr}
         onClick = {this.handleClick}>
 				<div className={styles['card']}>
-          <Unit className={styles['unit']}
+          <Unit className={UnitCss['unit']}
                 data = {this.props.data.unit}
-                arrowCss = {this.props.arrowCss} />
+                arrowCss = {this.props.arrowCss}
+                inCard = {true} />
           <div className={styles['card-info']}>
             {this.props.data.unit.name}
             <br />

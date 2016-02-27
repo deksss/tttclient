@@ -29,16 +29,16 @@ function setPlayerData (state) {
     return state.set('hand', state.get('players').get(0).get('hand'))
                 .set('selectedCard', state.get('players').get(0).get('selectedCard'))
                 .set('hp', state.get('players').get(0).get('hp'))
-                .set('deckLenght', state.get('players').get(0).get('deck').count())
-                .set('enemyDeckLenght', state.get('players').get(1).get('deck').count())
+                .set('deckLenght', state.get('players').get(0).get('deck') ? state.get('players').get(0).get('deck').count() : 0)
+                .set('enemyDeckLenght',state.get('players').get(1).get('deck') ? state.get('players').get(1).get('deck').count() : 0)
                 .set('enemyHp', state.get('players').get(1).get('hp'))
                 .set('enemyHand', state.get('players').get(1).get('hand'));
   } else if (playerSign === 'P2') {
     return state.set('hand', state.get('players').get(1).get('hand'))
                 .set('selectedCard', state.get('players').get(1).get('selectedCard'))
                 .set('hp', state.get('players').get(1).get('hp'))
-                .set('deckLenght', state.get('players').get(1).get('deck').count())
-                .set('enemyDeckLenght', state.get('players').get(0).get('deck').count())
+                .set('deckLenght', state.get('players').get(1).get('deck') ? state.get('players').get(1).get('deck').count() : 0)
+                .set('enemyDeckLenght', state.get('players').get(0).get('deck')?  state.get('players').get(0).get('deck').count() : 0)
                 .set('enemyHp', state.get('players').get(0).get('hp'))
                 .set('enemyHand', state.get('players').get(0).get('hand'));
   } else {
@@ -58,10 +58,11 @@ function setState (state, newState, rooms) {
     if (newState.ready) {
       result = whoTurn(result);
     }
-    if (!state.get('playerNumber') || state.get('playerNumber') === -1) {
+    console.log('playerNumber ' + result.get('playerNumber'));
+    if (!result.get('playerNumber') || result.get('playerNumber') === -1) {
       result = setYourPlayerNumber(result);
     }
-
+    console.log('playerNumber 2' + result.get('playerNumber'));
     result = setPlayerData(result);
     return result.set('allReady', newState.ready)
                  .set('rooms', rooms);
@@ -121,15 +122,25 @@ function setplayerSign (state) {
   }
 }
 
-//for delete:
 export function setYourPlayerNumber (state) {
-  if (state.get('playerSign') && state.get('playerSign') === 'P1') {
+  console.log(state.getIn(['players', 0, 'id']));
+  console.log(state.get('clientId'));
+  if (state.getIn(['players', 0, 'id']) === state.get('clientId')) {
+    console.log('p1');
+    return state.set('playerNumber', 0);
+  } else if (state.getIn(['players', 1, 'id']) === state.get('clientId')) {
+    return state.set('playerNumber', 1);
+  } else {
+    return state.set('playerNumber', -1);
+  }
+/*  if (state.get('playerSign') && state.get('playerSign') === 'P1') {
     return state.set('playerNumber', 0);
   } else if (state.get('playerSign') && state.get('playerSign') === 'P2') {
     return state.set('playerNumber', 1);
   } else {
     return state.set('playerNumber', -1);
   }
+  */
 }
 
 function setYourName (state, name) {

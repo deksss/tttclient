@@ -1,0 +1,95 @@
+.hand-dwn {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  width: auto;
+  margin-top: 1rem;
+}
+
+.card-container:hover {
+  overflow: visible;
+}
+
+.card-container {
+  overflow: visible;
+}
+
+.card  {
+  z-index: 1;
+  background-image: url("assets/card-framed.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+   margin-right:-2rem;
+}
+
+  .card:hover {
+    margin-top: -53%;
+    transition: all 0.2s ease-in-out;
+    z-index:999;
+    position: relative;
+}
+
+.card-info {
+  height: 34%;
+  text-align:center;
+  padding: 0.2em;
+  font-size: 0.8em;
+}
+
+.give-card {
+  position: relative;
+  animation: shows-from-r-to-l 0.8s linear 0.8s 1;
+}
+
+.card-selected {
+   border:1px solid red;
+}
+
+@media screen and (min-height: 440px) {
+  .card-container {
+    width: 80px;
+    height: 80px;
+  }
+  .hand-dwn {
+    height: 80px;
+  }
+  .card {
+    width: 80px;
+    height: 120px;
+  }
+}
+
+@media screen and (min-height: 700px) {
+  .card-container {
+    width: 120px;
+    height: 120px;
+  }
+  .card {
+    width: 122px;
+    height: 180px;
+  }
+  .hand-dwn {
+    height: 120px;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+  .card-container {
+    width: 200px;
+    height: 200px;
+  }
+  .card {
+    width: 200px;
+    height: 295px;
+  }
+  .hand-dwn {
+    height: 200px;
+  }
+}
