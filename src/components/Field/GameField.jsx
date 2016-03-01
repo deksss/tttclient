@@ -25,6 +25,13 @@ const GameFieldCell = React.createClass({
   propTypes: {
     data: PropTypes.object.isRequired
   },
+  getAtkPlayer: function () {
+    if (this.props.data.atakPlayer) {
+      return { backgroundColor: 'red'};
+    } else {
+      return { backgroundColor: 'transparent '};
+    }
+  },
   getArrowCss: function () {
     if (this.props.data.unit) {
       const name = this.props.data.owner === 0 ?  'atk-arrow-green' : 'atk-arrow-blue';
@@ -44,8 +51,11 @@ const GameFieldCell = React.createClass({
     const arrowCss = this.getArrowCss();
     const dmgGet =  this.props.data.dmgGet || '';
     const atkDirect =  this.props.data.atkDirect || '';
+    const atakPlayerStyle = this.getAtkPlayer();
     return (
-      <div className={styles['cell']} onClick = {this.handleClick}>
+      <div style = {atakPlayerStyle} 
+           className={styles['cell']} 
+           onClick = {this.handleClick}>
         <Unit data = {unit} died = {died}
               arrowCss = {arrowCss} atkDirect = {atkDirect}
               inCard = {false}

@@ -19,12 +19,12 @@ import List from 'immutable';
 const socket = io(`${location.protocol}//${location.hostname}:3001`);
 
 socket.on('state', function (state) {
-  console.log('rooms from server' + state['rooms']);
   const roomId = store.getState().get('roomId');
   if (state[roomId] &&
       state[roomId].fieldAnimation &&
       state[roomId].fieldAnimation.length > 0) {
-    console.log(state[roomId].fieldAnimation);
+    store.dispatch(setState(store.getState().merge({curPlayer: state[roomId].curPlayer}).toJS(), 
+                   state['rooms']));
     var maxLoops = state[roomId].fieldAnimation.length;
     var counter = 0;
     (function next() {
@@ -44,7 +44,6 @@ socket.on('state', function (state) {
 
 export function sendCreate(roomId, playerId, name) {
   socket.emit('create', roomId, playerId, name);
-  console.log('send create room');
 }
 
 export function sendJoin(roomId, playerId, name) {

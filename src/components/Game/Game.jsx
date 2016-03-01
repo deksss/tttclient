@@ -21,7 +21,8 @@ export const GameView = React.createClass({
              <div className = {styles['game-container-main']}>
                <EnemyHand enemyHand = {this.props.enemyHand} />
                <GameField gameField = {this.props.gameField}
-                          cellClick = {this.props.cellClick} />
+                          cellClick = {this.props.cellClick}                   
+               />
                <PlayerHand playerHand = {this.props.playerHand}
                            cardSelect = {this.props.cardSelect}
                            selectedCard = {this.props.selectedCard}

@@ -177,7 +177,7 @@ export default function (state = Map(), action) {
     case 'SET_NUMBER':
       return setYourPlayerNumber(state);
     case 'SET_YOUR_NAME':
-      return setYourName(state, action.name)
+      return setYourName(state, action.name);
   }
   return state;
 }

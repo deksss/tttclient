@@ -48,8 +48,8 @@ var InfoContainer = React.createClass({
     return (
       <div className={styles['game-container-info']}>
         <EnemyInfo
-        enemyHP = {this.props.yourHP}
-        enemyDeckLen = {this.props.yourDeckLen} />
+        enemyHP = {this.props.enemyHP}
+        enemyDeckLen = {this.props.enemyDeckLen} />
         <ScoreBar />
         <LogBar />
         <EndTurnButton
