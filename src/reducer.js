@@ -111,7 +111,11 @@ function nextTurn (state) {
 function whoTurn (state) {
   if (state.get('curPlayer')) {
     if (state.get('curPlayer') === state.get('playerSign')) {
-      return state.set('whoTurn', 'you').set('msg', 'Your Turn!');
+      if (state.get('whoTurn') === 'you') {
+        return state.set('whoTurn', 'you').set('msg', ''); 
+      } else {
+        return state.set('whoTurn', 'you').set('msg', 'Your Turn!'); 
+      }    
     } else {
       return state.set('whoTurn', 'enemy').set('msg', '');;
     }

@@ -27,7 +27,7 @@
   background-color: black;
   color: white;
   position: absolute;
-  width: 50%;
+  width: 80%;
   text-align: center;
   z-index: 1000;
   animation: global-info-show 2s linear 1s 1;
@@ -41,22 +41,28 @@
 @keyframes global-info-show {
   0% {
     transform: translate(-100%, 0);
-    opacity: 0.1;
   }
-  20% {
-    transform: translate(-75%, 0);
+  25% {
+    transform: translate(-50%, 0);
     opacity: 1;
   }
   50% {
-    transform: translate(-70%, 0);
-    opacity: 1;
+    transform: translate(-48%, 0);
+  }
+  75% {
+    transform: translate(-46%, 0);
+    opacity: 0.9;
+  }
+  85% {
+    transform: translate(-42%, 0);
+    opacity: 0.8;
   }
   95% {
-    transform: translate(-45%, 0);
+    transform: translate(-40%, 0);
     opacity: 0.8;
   }
   100% {
     transform: translate(-1%, 0);
-    opacity: 0.9;
+    opacity: 0.7;
   }
 }

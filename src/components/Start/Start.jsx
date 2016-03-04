@@ -3,13 +3,14 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../action_creators';
 import { Link } from 'react-router';
+import styles from './Start.scss';
 
 export const RoomItem =  React.createClass({
     handleChange: function (event) {
       this.props.join(this.props.roomId);
     },
     render: function() {
-    return  <div className='room-item'>
+    return  <div className = {styles['room-item']}>
              {this.props.roomId}
               <button ref='Join'
                 onClick={this.handleChange}>
@@ -43,12 +44,15 @@ export const StartView = React.createClass({
           {deck}
         </td>);
     const roomList =  this.props.rooms.map(function(room, i) {
-      return (<RoomItem roomId = {room} join = {join} key = {i} />);
+      return (<RoomItem className = {styles['deck-item']} 
+                        roomId = {room} 
+                        join = {join} 
+                        key = {i} />);
     }) || [];
     if (!this.props.joined) {
       return  (
-             <div className='start-container'>
-              <h1>Game name here</h1>
+             <div className={styles['start-container']}>
+              <h1>Game name</h1>
                 <input
                  type="text"
                  value={this.props.yourName}
@@ -56,13 +60,14 @@ export const StartView = React.createClass({
                  onClick={this.handleChange}
                  onFocus={this.handleChange}
                 />
-              <hr />
+               <br /> 
                 {roomList}
-              <hr />
+               <br /> 
                <button ref='Create'
                 onClick={this.props.createRoom}>
                 Create Game
               </button>
+              <br />
                <button ref='CreateBot'
                 onClick={this.props.createRoomBot}>
                 Create Game vs Bot
@@ -71,11 +76,13 @@ export const StartView = React.createClass({
             );
     } else {
       return (
-              <div>
+              <div className={styles['wait-room']}>
+              Select deck:
+              <br />
                <tr>
                 {deckList}
                </tr>
-                <hr />
+                <br />
              <Link to='/game' onClick={this.props.start} >
                Start
              </Link>

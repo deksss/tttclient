@@ -10,15 +10,15 @@ import styles from './Gams.scss';
 
 export const ShowMesseges = React.createClass({
   mixins: [PureRenderMixin],
-  componentDidMount: function() {
-    setTimeout(function () {
-       this.props.clearMsg();
-    }, 2000);
-  },
   render: function () {
+    const clear = this.props.clearMsg;
+    setTimeout(function () {
+      clear();
+    }, 3000);
     if (this.props.msg && this.props.msg !== '') {
       return (
-        <div className = {styles['global-info']}>
+        <div className = {styles['global-info']}
+             onClick = {clear}>
           <h1>{this.props.msg}</h1>
         </div>
       );
