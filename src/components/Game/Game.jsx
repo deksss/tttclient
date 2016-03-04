@@ -8,6 +8,26 @@ import PlayerHand from '../PlayerHand/PlayerHand';
 import InfoContainer from '../Info/infoContainer';
 import styles from './Gams.scss';
 
+export const ShowMesseges = React.createClass({
+  mixins: [PureRenderMixin],
+  componentDidMount: function() {
+    setTimeout(function () {
+       this.props.clearMsg();
+    }, 2000);
+  },
+  render: function () {
+    if (this.props.msg && this.props.msg !== '') {
+      return (
+        <div className = {styles['global-info']}>
+          <h1>{this.props.msg}</h1>
+        </div>
+      );
+    } else {
+      return (<div className = {styles['global-info--hidden']}></div>);
+    }
+  }
+});
+
 export const GameView = React.createClass({
   mixins: [PureRenderMixin],
   render: function() {
@@ -19,6 +39,8 @@ export const GameView = React.createClass({
     } else {
       return <div className = {styles['game-container']}>
              <div className = {styles['game-container-main']}>
+               <ShowMesseges msg =  {this.props.msg} 
+                             clearMsg = {this.props.clearMsg}/>
                <EnemyHand enemyHand = {this.props.enemyHand} />
                <GameField gameField = {this.props.gameField}
                           cellClick = {this.props.cellClick}                   
@@ -56,7 +78,8 @@ function mapStateToProps(state) {
     winner: state.get('winner') || false,
     enemyDeckLen: state.get('enemyDeckLenght') || '',
     yourDeckLen: state.get('deckLenght') || '',
-    enemyHP: state.get('enemyHp') || ''
+    enemyHP: state.get('enemyHp') || '',
+    msg: state.get('msg') || ''
   }
 }
 

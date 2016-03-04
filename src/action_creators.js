@@ -18,6 +18,12 @@ export function createRoom () {
   };
 }
 
+export function createRoomBot () {
+  return {
+    type: 'CREATE_VS_BOT'
+  };
+}
+
 export function setRoomId (roomId) {
   return {
     type: 'SET_ROOM_ID',
@@ -45,6 +51,12 @@ export function setField (field) {
   return {
     type: 'SET_FIELD',
     field
+  };
+}
+
+export function clearMsg () {
+  return {
+    type: 'CLEAR_MSG'
   };
 }
 

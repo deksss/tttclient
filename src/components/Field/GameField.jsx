@@ -1,16 +1,19 @@
 import styles from './GameField.scss';
 import React, { PropTypes } from 'react';
 import Unit from '../Unit/UnitRender';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 const GameFieldRow = React.createClass({
+  mixins: [PureRenderMixin],
   propTypes: {
-    data: PropTypes.array.isRequired
+    row: PropTypes.array.isRequired,
+    cellClick: PropTypes.func.isRequired
   },
   render: function () {
     var cellClick = this.props.cellClick;
-    var cellNodes = this.props.data.map(function (cell, i) {
+    var cellNodes = this.props.row.map(function (cell, i) {
       return (
-        <GameFieldCell key = {i} data = {cell} cellClick = {cellClick} />
+        <GameFieldCell key = {i} cell = {cell} cellClick = {cellClick} />
       );
     });
     return (
@@ -22,42 +25,49 @@ const GameFieldRow = React.createClass({
 });
 
 const GameFieldCell = React.createClass({
+  mixins: [PureRenderMixin],
   propTypes: {
-    data: PropTypes.object.isRequired
+    cell: PropTypes.object.isRequired
   },
-  getAtkPlayer: function () {
-    if (this.props.data.atakPlayer) {
+  getAtkPlayerStyle: function () {
+    if (this.props.cell.atakPlayer) {
       return { backgroundColor: 'red'};
     } else {
-      return { backgroundColor: 'transparent '};
+      return { backgroundColor: 'transparent'};
     }
   },
   getArrowCss: function () {
-    if (this.props.data.unit) {
-      const name = this.props.data.owner === 0 ?  'atk-arrow-green' : 'atk-arrow-blue';
-      const ready =  this.props.data.unit.ready === true ? '-active' : '';
+    if (this.props.cell.unit) {
+      const name = this.props.cell.owner === 0 ?  'atk-arrow-green' : 'atk-arrow-blue';
+      const ready = this.props.cell.unit.ready === true ? '-active' : '';
       return name + ready;
     } else {
       return '';
     }
   },
+  getCellCss: function () {
+    let css = styles['cell'];
+    if (this.props.cell.unit) {
+      if (this.props.cell.owner === 0 ) {
+         css += ' ' + styles['cell-cross'];
+      } else {
+         css += ' ' + styles['cell-zero'];
+      }    
+    }
+    return css;
+  },
   handleClick: function () {
-    this.props.cellClick(this.props.data.id);
+    this.props.cellClick(this.props.cell.id);
   },
   render: function () {
-    const playerSign = this.props.playerSign || '';
-    const unit = this.props.data.unit || {info:'', hp: '', atk:'', direction: []};
-    const died = this.props.data.died;
-    const arrowCss = this.getArrowCss();
-    const dmgGet =  this.props.data.dmgGet || '';
-    const atkDirect =  this.props.data.atkDirect || '';
-    const atakPlayerStyle = this.getAtkPlayer();
+    const unit = this.props.cell.unit || false;
+    if (unit) {
     return (
-      <div style = {atakPlayerStyle} 
-           className={styles['cell']} 
+      <div style = {this.getAtkPlayerStyle()} 
+           className={this.getCellCss()} 
            onClick = {this.handleClick}>
-        <Unit data = {unit} died = {died}
-              arrowCss = {arrowCss} atkDirect = {atkDirect}
+        <Unit data = {unit} died = {this.props.cell.died}
+              arrowCss = {this.getArrowCss()} atkDirect = {this.props.cell.atkDirect}
               inCard = {false}
               />
         <div className = {styles['unit-info']}>
@@ -65,12 +75,21 @@ const GameFieldCell = React.createClass({
         </div>
       </div>
     );
+    } else {
+      return (
+        <div className={styles['cell']} 
+             onClick = {this.handleClick}>
+        </div>       
+      );
+    }
   }
 });
 
 const GameField = React.createClass({
+  mixins: [PureRenderMixin],
   propTypes: {
-    gameField: PropTypes.array.isRequired
+    gameField: PropTypes.array.isRequired,
+    cellClick: PropTypes.func.isRequired
   },
   render: function () {
     var cellClick = this.props.cellClick;
@@ -78,7 +97,7 @@ const GameField = React.createClass({
                     this.props.gameField.toJS().slice(3, 6),
                     this.props.gameField.toJS().slice(6, 9)].map(function (row, i) {
       return (
-        <GameFieldRow key = {i} data = {row} cellClick = {cellClick}/>
+        <GameFieldRow key = {i} row = {row} cellClick = {cellClick}/>
       );
     });
     return (

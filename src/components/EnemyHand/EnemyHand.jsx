@@ -14,7 +14,7 @@ const EnemyCard = React.createClass({
 const EnemyHand = React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {
-    enemyHand: PropTypes.array.isRequired
+    enemyHand: PropTypes.object.isRequired
   },
   render: function () {
     var cardNodes = this.props.enemyHand.toJS().map(function (card, i) {

@@ -20,8 +20,11 @@
 }
 
 .cell {
+  position: relative;
   margin: 0.5em;
+  z-index: 1;
 }
+
 
 .field {
   position: relative;
@@ -60,4 +63,36 @@
 
 .unit-info:hover {
   opacity: 0.8;
+}
+
+
+.cell-cross:before, .cell-cross:after {
+  opacity: 0.4;
+  left:55px;
+  top: 1px;
+  position: absolute;
+  content: '';
+  height: 140px;
+  width: 10px;
+  background-color: #aeeaae;
+}
+
+.cell-cross:before {
+  transform: rotate(45deg);
+}
+
+.cell-cross:after {
+  transform: rotate(-45deg);
+}
+
+.cell-zero:after {
+  top: 0.5em;
+  left: 0.5em;
+  opacity: 0.4;
+  position: absolute;
+  content: '';
+  height: 80px;
+  width: 80px;
+  border:10px solid #99bbff;
+  border-radius: 80px;
 }

@@ -48,7 +48,7 @@ export const StartView = React.createClass({
     if (!this.props.joined) {
       return  (
              <div className='start-container'>
-              <h1>Hello, your ID: {this.props.clientId}</h1>
+              <h1>Game name here</h1>
                 <input
                  type="text"
                  value={this.props.yourName}
@@ -62,6 +62,10 @@ export const StartView = React.createClass({
                <button ref='Create'
                 onClick={this.props.createRoom}>
                 Create Game
+              </button>
+               <button ref='CreateBot'
+                onClick={this.props.createRoomBot}>
+                Create Game vs Bot
               </button>
             </div>
             );

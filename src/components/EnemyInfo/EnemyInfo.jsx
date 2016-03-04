@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 var EnemyInfo = React.createClass({
+  mixins: [PureRenderMixin],
   render: function () {
     return (
       <div className={styles['enemy-info']}>
