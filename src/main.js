@@ -11,6 +11,8 @@ import getClientId from './client_id';
 import App from './components/App/App';
 import {StartContainer} from './components/Start/Start';
 import {GameContainer} from './components/Game/Game';
+import {LobbyContainer} from './components/Lobby/Lobby';
+import {RoomContainer} from './components/Room/Room';
 import styles from 'styles/style.css';
 
 const socket = io(`${location.protocol}//${location.hostname}:3001`);
@@ -84,6 +86,8 @@ store.dispatch(setYourPlayerNumber());
 const routes = <Route component={App}>
   <Route path='/' component={StartContainer} />
   <Route path='/game' component={GameContainer} />
+  <Route path='/room' component={RoomContainer} />
+  <Route path='/lobby' component={LobbyContainer} />
 </Route>;
 
 ReactDOM.render(

@@ -11,7 +11,7 @@
   z-index: 1;
   width:153px;
   height:99px;
-  background-image: url("assets/end_turn_active1.png");
+  background-image: url("assets/end_turn_active.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 100% 100%;
@@ -25,7 +25,7 @@
   z-index: 1;
   width:153px;
   height:99px;
-  background-image: url("assets/end_turn_passive1.png");
+  background-image: url("assets/end_turn_passive.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 100% 100%;
@@ -43,20 +43,20 @@
  @keyframes rotate-down {
      0%  {
      transform: rotate(0deg);
-     background-image: url("assets/end_turn_active1.png");
+     background-image: url("assets/end_turn_active.png");
    }
      100% {
      transform: rotate(180deg);
-     background-image: url("assets/end_turn_passive1.png");
+     background-image: url("assets/end_turn_passive.png");
    }
  }
 
  @keyframes rotate-up {
    0%  {
      transform: rotate(180deg);
-     background-image: url("assets/end_turn_passive1.png");
+     background-image: url("assets/end_turn_passive.png");
    }
      100% {transform: rotate(0deg);
-     background-image: url("assets/end_turn_active1.png");
+     background-image: url("assets/end_turn_active.png");
    }
  }

@@ -10,10 +10,14 @@ body,
   margin: 0;
 }
 
+.app {
+  background: url("assets/main-background.jpg");
+}
+
 button,
 button:active,
 button:focus {
-    outline: none;
+  outline: none;
 }
 
 .card .unit {

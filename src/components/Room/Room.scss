@@ -1,4 +1,4 @@
-.start-container {
+.wait-room {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -42,6 +42,7 @@
   margin: 2rem;
   width: 270px;
   height: 100px;
+  /*background: #a47165;*/
    background: rgba(164, 113, 101, 0.5);
   background: linear-gradient(to bottom, rgba(164, 113, 101, 0.5) 0%, rgba(249, 227, 184, 0.5) 50%, rgba(120, 76, 65, 0.5) 100%);
   box-shadow:
