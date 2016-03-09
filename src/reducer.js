@@ -56,7 +56,7 @@ function setPlayerData (state) {
   }
 }
 
-function setState (state, newState, rooms) {
+function setState (state, newState) {
   if (newState) {
     console.log('new state have:');
     console.log(newState);
@@ -71,10 +71,7 @@ function setState (state, newState, rooms) {
       result = setYourPlayerNumber(result);
     }
     result = setPlayerData(result);
-    return result.set('allReady', newState.ready)
-                 .set('rooms', rooms);
-  } else {
-    return state.set('rooms', rooms);
+    return result.set('allReady', newState.ready);
   }
 }
 
@@ -126,11 +123,13 @@ function whoTurn (state) {
 
 function setplayerSign (state) {
   const id = state.get('clientId');
-  const findResult = state.get('players').find(p => p.get('id') === id);
-  if (findResult && findResult.get('name')) {
-    return state.set('playerSign', findResult.get('name'));
-  } else {
-    return state.set('playerSign', '');
+  if (state.get('players')) {
+    let findResult = state.get('players').find(p => p.get('id') === id);
+    if (findResult && findResult.get('name')) {
+      return state.set('playerSign', findResult.get('name'));
+    } else {
+      return state.set('playerSign', '');
+    }
   }
 }
 
@@ -148,6 +147,10 @@ function setYourName (state, name) {
   return state.set('yourName', name);
 }
 
+function setRoomsState (state, rooms) {
+  return state.set('rooms', rooms);
+}
+
 export default function (state = Map(), action) {
   switch (action.type) {
     case 'SET_CLIENT_ID':
@@ -155,7 +158,7 @@ export default function (state = Map(), action) {
     case 'SET_CONNECTION_STATE':
       return setConnectionState(state, action.state, action.connected);
     case 'SET_STATE':
-      return setState(state, action.state, action.rooms);
+      return setState(state, action.state);
     case 'PLAYER_START':
       return start(state);
     case 'PLAYER_SET_NAME':
@@ -182,6 +185,8 @@ export default function (state = Map(), action) {
       return createRoomBot(state);
     case 'CLEAR_MSG':
       return clearMsg(state);
+    case 'ROOMS STATE':
+      return setRoomsState(state, action.rooms)
   }
   return state;
 }

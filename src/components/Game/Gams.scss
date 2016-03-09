@@ -22,12 +22,13 @@
 }
 
 .global-info {
+  position:absolute;
   top: 50%;
   opacity: 0;
   background-color: black;
   color: white;
   position: absolute;
-  width: 80%;
+  width: 60%;
   text-align: center;
   z-index: 1000;
   animation: global-info-show 2s linear 1s 1;

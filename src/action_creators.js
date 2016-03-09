@@ -39,11 +39,10 @@ export function setConnectionState (state, connected) {
   };
 }
 
-export function setState (state, rooms) {
+export function setState (state) {
   return {
     type: 'SET_STATE',
-    state,
-    rooms: rooms
+    state
   };
 }
 
@@ -143,5 +142,12 @@ export function selectDeck (deck) {
     meta: {remote: true},
     deck: deck,
     type: 'SELECT_DECK'
+  };
+}
+
+export function setRoomsState (rooms) {
+  return {
+    type: 'ROOMS STATE',
+    rooms: rooms
   };
 }

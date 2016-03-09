@@ -21,7 +21,8 @@ export const Room = React.createClass({
                  onClick = {this.handleDecks} />
           {deck}
         </td>);
-      return (
+    if (deckList.length > 0) {
+            return (
               <div className={styles['wait-room']}>
               Select deck:
               <br />
@@ -35,18 +36,18 @@ export const Room = React.createClass({
            </div>
              );
     }
+    else {
+    return (
+      <div>no deck found</div>
+      )
+    }
+  }
 });
 
 function mapStateToProps (state) {
-  console.log('rooms ' +state.get('rooms'));
-   console.log('jnd ' + state.get('joined'));
   return {
-    rooms: state.get('rooms') || [],
     clientId: state.get('clientId'),
-    roomId: state.get('roomId'),
-    joined: state.get('joined') || false,
-    yourName: state.get('yourName'),
-    deckList: state.get('deckList') || ['mage-deck', 'comander-deck']
+    deckList: state.get('deckList') || []
   };
 }
 
