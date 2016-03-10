@@ -22,12 +22,12 @@ const PlayerCard = React.createClass({
     return (
       <div className = {cssStr}
         onClick = {this.handleClick}>
-				<div className={styles['card']}>
-          <Unit className={UnitCss['unit']}
+				<div className = {styles['card']}>
+          <Unit className = {UnitCss['unit']}
                 data = {this.props.data.unit}
                 arrowCss = {this.props.arrowCss}
                 inCard = {true} />
-          <div className={styles['card-info']}>
+          <div className = {styles['card-info']}>
             {this.props.data.unit.name}
             <br />
             {this.props.data.unit.info}

@@ -47,13 +47,14 @@ const GameFieldCell = React.createClass({
   },
   getCellCss: function () {
     let css = styles['cell'];
-    if (this.props.cell.unit) {
-      if (this.props.cell.owner === 0 ) {
-         css += ' ' + styles['cell-cross'];
-      } else {
-         css += ' ' + styles['cell-zero'];
-      }    
-    }
+  // for cross or circle for card background  
+  //  if (this.props.cell.unit) {
+  //    if (this.props.cell.owner === 0 ) {
+  //       css += ' ' + styles['cell-cross'];
+  //    } else {
+  //       css += ' ' + styles['cell-zero'];
+  //    }    
+  //  }
     return css;
   },
   handleClick: function () {

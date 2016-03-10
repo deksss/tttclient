@@ -10,7 +10,14 @@ body,
   margin: 0;
 }
 
+html {
+  overflow: -moz-scrollbars-vertical; 
+  overflow-y: scroll;
+}
+
 .app {
+  overflow: -moz-scrollbars-vertical; 
+  overflow-y: scroll;
   background: url("assets/main-background.jpg");
 }
 
@@ -135,20 +142,3 @@ button:focus {
       height: 45px;
       background-color: white;
   }
-
-
-
-@keyframes shows-from-r-to-l {
-  0% {
-   transform: translate(+400px, 0);
-   opacity: 0;
-  }
-  50% {
-   transform: translate(+250px, 0);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translate(+1px, 0);
-     opacity: 1;
-  }
-}

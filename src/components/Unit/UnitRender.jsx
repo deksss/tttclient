@@ -43,23 +43,23 @@ var Unit = React.createClass({
     const atkCss = this.getAtkCss(this.props.atkDirect);
     const whereCss = this.props.inCard ? styles['card-unit'] : styles['unit'];
     return (
-       <div className={whereCss + backCss + deadCss + atkCss}>
-             <div className={styles['unit-top']}>
+       <div className = {whereCss + backCss + deadCss + atkCss}>
+             <div className = {styles['unit-top']}>
              <div style = {ULStyle} className={ styles['unit-top-ul'] + arrowCss }></div>
               <div style = {UStyle} className={styles['unit-top-u'] + arrowCss}></div>
               <div style = {URStyle} className={styles['unit-top-ur'] + arrowCss}></div>
             </div>
-            <div className={styles['unit-mid']}>
+            <div className = {styles['unit-mid']}>
               <div style = {LStyle} className={styles['unit-mid-l'] + arrowCss}></div>
               <div style = {RStyle} className={styles['unit-mid-r'] + arrowCss}></div>
             </div>
-            <div className={styles['unit-foot']}>
+            <div className = {styles['unit-foot']}>
               <div style = {DLStyle} className={styles['unit-foot-dl'] + arrowCss}></div>
-               <div className={styles['unit-foot-hp']}>
+               <div className = {styles['unit-foot-hp']}>
                {hp}
                </div>
               <div style = {DStyle} className={styles['unit-foot-d'] + arrowCss}></div>
-               <div className={styles['unit-foot-atk']}>
+               <div className = {styles['unit-foot-atk']}>
                {atk}
                </div>
               <div style = {DRStyle} className={styles['unit-foot-dr'] + arrowCss}></div>

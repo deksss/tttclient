@@ -9,36 +9,31 @@
   margin-top: 1rem;
 }
 
-.card-container:hover {
-  overflow: visible;
-}
-
 .card-container {
-  overflow: visible;
+  overflow: hidden;
 }
 
-.card  {
+.card {
+  margin-top: 53%;
   z-index: 1;
   background-image: url("assets/card-framed.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 100% 100%;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
   border-radius: 5px;
-   margin-right:-2rem;
+  margin-right: -2rem;
 }
 
-  .card:hover {
-    margin-top: -53%;
-    transition: all 0.2s ease-in-out;
-    z-index:999;
-    position: relative;
+.card:hover {
+  margin-top: 0%;
+  transition: all 0.2s ease-in-out;
+  z-index: 999;
+  position: relative;
 }
 
 .card-info {
   height: 34%;
-  text-align:center;
+  text-align: center;
   padding: 0.2em;
   font-size: 0.8em;
 }
@@ -48,17 +43,32 @@
   animation: shows-from-r-to-l 0.8s linear 0.8s 1;
 }
 
+@keyframes shows-from-r-to-l {
+  0% {
+   transform: translate(+200%, -20%);
+   opacity: 0;
+  }
+  50% {
+   transform: translate(+100%, -10%);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(+1px, 0);
+     opacity: 1;
+  }
+}
+
 .card-selected {
-   border:1px solid red;
+   filter: saturate(5);
 }
 
 @media screen and (min-height: 440px) {
   .card-container {
     width: 80px;
-    height: 80px;
+    height: 120px;
   }
   .hand-dwn {
-    height: 80px;
+    height: 120px;
     min-width: 400px;
   }
   .card {
@@ -70,14 +80,14 @@
 @media screen and (min-height: 700px) {
   .card-container {
     width: 120px;
-    height: 120px;
+    height: 180px;
   }
   .card {
     width: 122px;
     height: 180px;
   }
   .hand-dwn {
-    height: 120px;
+    height: 180px;
     min-width: 600px;
   }
 }
@@ -85,14 +95,14 @@
 @media screen and (min-height: 1000px) {
   .card-container {
     width: 200px;
-    height: 200px;
+    height: 295px;
   }
   .card {
     width: 200px;
     height: 295px;
   }
   .hand-dwn {
-    height: 200px;
+    height: 295px;
     min-width: 1000px;
   }
 }
