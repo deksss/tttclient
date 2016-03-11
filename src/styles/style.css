@@ -11,13 +11,11 @@ body,
 }
 
 html {
-  overflow: -moz-scrollbars-vertical; 
+  overflow: -moz-scrollbars-vertical;
   overflow-y: scroll;
 }
 
 .app {
-  overflow: -moz-scrollbars-vertical; 
-  overflow-y: scroll;
   background: url("assets/main-background.jpg");
 }
 

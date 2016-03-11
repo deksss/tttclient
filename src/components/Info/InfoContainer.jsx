@@ -59,7 +59,6 @@ var InfoContainer = React.createClass({
         playerSign = {this.props.playerSign}
         yourHP = {this.props.yourHP}
         yourDeckLen = {this.props.yourDeckLen} />
-        <Link to='/'>Go Start</Link>
       </div>
     );
   }
