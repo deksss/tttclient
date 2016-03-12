@@ -1,0 +1,17 @@
+.player-container {
+  transform: translate(-10%, 0);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: flex-start;
+}
+
+@media screen and (orientation: portrait) {
+  .player-container {
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+  }
+}

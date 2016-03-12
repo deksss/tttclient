@@ -1,18 +1,18 @@
-@media screen and (min-height: 440px) {
+@media screen and (min-height: 400px) and (min-width: 400px) {
   .cell {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
   }
 }
 
-@media screen and (min-height: 700px) {
+@media screen and (min-height: 700px) and (min-width: 900px) {
   .cell {
     width: 120px;
     height: 120px;
   }
 }
 
-@media screen and (min-height: 1000px) {
+@media screen and (min-height: 1200px) and (min-width: 1600px) {
   .cell {
     width: 200px;
     height: 200px;

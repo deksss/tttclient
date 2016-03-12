@@ -1,11 +1,12 @@
 .deck {
-  background-image: url("assets/backside.png");
+/*  background-image: url("assets/backside.png"); */
   background-size: cover;
   border-radius: 5px;
   width: 100px;
-  height: 148px;
+  height: 50px;
 }
 
 .enemy-info {
+    margin:1rem;
   color: red;
 }

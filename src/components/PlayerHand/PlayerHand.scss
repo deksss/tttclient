@@ -5,12 +5,14 @@
   justify-content: flex-start;
   align-items: flex-start;
   align-content: flex-start;
-  align-self: flex-start;
-  width: auto;
+  height: 120px;
+  width: 260px;
 }
 
 .card-container {
   overflow: visible;
+  width: 60px;
+  height: 105px;
 }
 
 .card-container:last-child {
@@ -18,6 +20,8 @@
 }
 
 .card {
+  width: 60px;
+  height: 105px;
   transform: translate(0, 35%);
   z-index: 1;
   background-image: url("assets/card-framed.png");
@@ -49,7 +53,7 @@
 
 @keyframes shows-from-r-to-l {
   0% {
-  overflow: visible;
+   overflow: visible;
    transform: translate(+200%, -10%);
    opacity: 0;
   }
@@ -70,22 +74,9 @@
    filter: saturate(3);
 }
 
-@media screen and (min-height: 440px) {
-  .card-container {
-    width: 80px;
-    height: 120px;
-  }
-  .hand-dwn {
-    height: 120px;
-    min-width: 260px;
-  }
-  .card {
-    width: 80px;
-    height: 120px;
-  }
-}
 
-@media screen and (min-height: 700px) {
+
+@media screen and (min-height: 700px) and (min-width: 900px) {
   .card-container {
     width: 120px;
     height: 180px;
@@ -100,7 +91,7 @@
   }
 }
 
-@media screen and (min-height: 1000px) {
+@media screen and (min-height: 1200px) and (min-width: 1600px) {
   .card-container {
     width: 200px;
     height: 295px;
@@ -111,6 +102,6 @@
   }
   .hand-dwn {
     height: 295px;
-    min-width: 610px;
+    width: 610px;
   }
 }

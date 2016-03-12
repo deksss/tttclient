@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../action_creators';
-import EnemyHand from '../EnemyHand/EnemyHand';
+import Enemy from '../Enemy/Enemy';
 import GameField from '../Field/GameField';
-import PlayerHand from '../PlayerHand/PlayerHand';
+import Player from '../Player/Player';
 import InfoContainer from '../Info/infoContainer';
 import styles from './Gams.scss';
 
@@ -38,26 +38,30 @@ export const GameView = React.createClass({
       return <div>wait all players, roomId: {this.props.roomId}</div>
     } else {
       return <div className = {styles['game-container']}>
-             <div className = {styles['game-container-main']}>
-               <ShowMesseges msg =  {this.props.msg} 
-                             clearMsg = {this.props.clearMsg}/>
-               <EnemyHand enemyHand = {this.props.enemyHand} />
-               <GameField gameField = {this.props.gameField}
-                          cellClick = {this.props.cellClick}                   
+               <Enemy enemyHand = {this.props.enemyHand} 
+                 enemyHP = {this.props.enemyHP}
+                 enemyDeckLen = {this.props.enemyDeckLen}
                />
-               <PlayerHand playerHand = {this.props.playerHand}
-                           cardSelect = {this.props.cardSelect}
-                           selectedCard = {this.props.selectedCard}
-                           playerSign={this.props.playerSign}/>
-             </div>
-             <InfoContainer
-              whoTurn={this.props.whoTurn}
-              nextTurn={this.props.nextTurn}
-              playerSign={this.props.playerSign}
-              yourHP={this.props.yourHP}
-              enemyHP={this.props.enemyHP}
-              yourDeckLen={this.props.yourDeckLen}
-              enemyDeckLen={this.props.enemyDeckLen}/>
+               <div className = {styles['game-container-main']}>
+                 <ShowMesseges msg =  {this.props.msg} 
+                             clearMsg = {this.props.clearMsg}
+                 />
+                 <GameField gameField = {this.props.gameField}
+                          cellClick = {this.props.cellClick}                   
+                 />
+                 <InfoContainer
+                  whoTurn={this.props.whoTurn}
+                  nextTurn={this.props.nextTurn} 
+                 />
+               </div>
+               <Player playerHand = {this.props.playerHand}
+                  playerSign = {this.props.playerSign}
+                  yourHP = {this.props.yourHP}
+                  cardSelect = {this.props.cardSelect}
+                  selectedCard = {this.props.selectedCard}
+                  playerSign={this.props.playerSign}
+                  yourDeckLen = {this.props.yourDeckLen}
+               />
            </div>
     }
   }

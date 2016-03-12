@@ -1,23 +1,23 @@
 .game-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;;
+  justify-content: space-between;;
   align-items: stretch;
-  align-content: space-between;
+  align-content: center;
   height: 100%;
   overflow: hidden;
-  background-image: url("assets/bord-bg.jpg");
-  background-repeat: no-repeat;
+  background-image: url("assets/bord-bg.png");
+  /* background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-size: 100% 100%;
+  background-size: 100% 100%; */
 }
 
 .game-container-main {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   align-content: space-between;
 }

@@ -9,10 +9,10 @@ var PlayerInfo = React.createClass({
   render: function () {
     return (
       <div className={styles['player-info']}>
-         {this.props.playerSign}
-         <br />
-        HP: {this.props.yourHP}
       <div className={styles['deck']}>
+        {this.props.playerSign}
+        <br />
+       HP: {this.props.yourHP}
       Card left: {this.props.yourDeckLen}
       </div>
       </div>

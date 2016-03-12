@@ -7,8 +7,8 @@ var EnemyInfo = React.createClass({
   render: function () {
     return (
       <div className={styles['enemy-info']}>
-     HP: {this.props.enemyHP}
         <div className={styles['deck']}>
+        HP: {this.props.enemyHP}
         Card left: {this.props.enemyDeckLen}
         </div>
       </div>
