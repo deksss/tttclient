@@ -23,6 +23,7 @@
   position: relative;
   margin: 0.5em;
   z-index: 1;
+  cursor: default;
 }
 
 
@@ -59,6 +60,7 @@
   height: 40px;
   z-index: 9999;
   background-color: white;
+  cursor: default;
 }
 
 .unit-info:hover {
